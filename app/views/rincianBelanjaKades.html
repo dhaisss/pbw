@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Laravel</title>
+    <link rel="stylesheet" href="../../public/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../public/plugins/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../public/css/sidebarStyle.css">
+    <link rel="stylesheet" href="../../public/css/panelStyle.css">
+    <style>
+        html, body {
+            background-color: white;
+            color: #636b6f;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 100;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+<div id="wrapper">
+    <div id="sidebar">
+        <div id="sidebar-wrapper">
+            <div class="sidebar-title">
+
+            </div>
+            <div>
+                <div class="sidebar-avatar-image">
+                    <span><img style="border-radius:20px;" src="../../public/image/rei.jpg" width="100px" height="125px" align=center></span>
+                </div>
+            </div>
+            <div class="sidebar-avatar-text">  Reinaldi Putra  </div>
+
+            <ul class="sidebar-nav">
+
+                <li><a href="dashboardKades.html"> <span>Dashboard</span></a></li>
+
+                <li><a href="profilKades.html"> <span>Profil</span></a></li>
+
+                <li><a href="buatLaporanKades.html"> <span>Buat Laporan</span></a></li>
+
+                <li><a href="rincianBelanjaKades.html"> <span>Rincian Belanja Desa</span></a></li>
+
+                <li><a href="daftarLaporan.html"><span>Daftar Laporan</span></a></li>
+
+                <li><a href="tentangDesaKades.html"><span>Tentang Desa</span></a></li>
+
+                <li><a href="index.php">
+                    <span>Logout</span>
+                </a>
+
+                </li>
+
+            </ul>
+            <div class="sidebar-footer">
+                <hr style="border-color: #DDD">
+                </a><br>
+            </div>
+            <div class="sidebar-avatar-image"></div><br>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div id="main-panel">
+        <div id="top-nav">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <!-- Navbar toggle button -->
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <!-- Sidebar toggle button -->
+                        <button type="button" class="sidebar-toggle">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand text-size-24" href="#"><i class="fa fa-list-alt"></i> Rincian Belanja Desa </a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="col-sm-6"><a href="buatBelanja.html"><button type="submit" class="btn btn-success"> <font color="white">Buat Rincian Belanja</font></button></a></div>
+            <br>
+            <hr class="col-lg-12">
+        </div>
+        <div id="content">
+            <div class="container-fluid">
+                <!-- basic form -->
+
+                <!-- Basic element -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"> Belanja Bidang Penyelenggaraan Pemerintahan Desa </h3>
+                                <br>
+
+                                <div class="panel-body table-responsive table-full">
+                                    <table class="table table-stripped table-bordered">
+
+                                        <tr>
+                                            <td class="text-center text-nowrap">Rincian Belanja</td>
+                                            <td class="text-center text-nowrap">Tanggal Pengeluaran</td>
+                                            <td class="text-center text-nowrap">Total Pengeluaran</td>
+                                            <td class="text-center text-nowrap">Action</td>
+                                        </tr>
+
+
+                                    </table>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Belanja Bidang Pelaksanaan Pembangunan Desa</h3>
+                            </div>
+                            <div class="panel-body table-responsive table-full">
+                                <table class="table table-stripped table-bordered">
+
+                                    <tr>
+                                        <td class="text-center text-nowrap">Rincian Belanja</td>
+                                        <td class="text-center text-nowrap">Tanggal Pengeluaran</td>
+                                        <td class="text-center text-nowrap">Total Pengeluaran</td>
+                                        <td class="text-center text-nowrap">Action</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="text-center text-nowrap">Perbaikan Irigasi</td>
+                                        <td class="text-center text-nowrap">20000000</td>
+                                        <td class="text-center text-nowrap">2018-10-05 13:20:15</td>
+                                        <td class="text-center text-nowrap">
+                                            <a href="ubahBelanja.html"><button type="submit" class="btn btn-success"> <font color="white">Ubah Rincian Belanja</font></button></a>
+
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center text-nowrap">Pembangunan pos jaga</td>
+                                        <td class="text-center text-nowrap">2000000</td>
+                                        <td class="text-center text-nowrap">2018-10-05 17:54:37</td>
+                                        <td class="text-center text-nowrap">
+                                            <a href="ubahBelanja.html"><button type="submit" class="btn btn-success"> <font color="white">Ubah Rincian Belanja</font></button></a>
+
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Belanja Bidang Pembinaan Kemasyarakatan</h3>
+                            </div>
+                            <div class="panel-body table-responsive table-full">
+                                <table class="table table-stripped table-bordered">
+
+                                    <tr>
+                                        <td class="text-center text-nowrap">Rincian Belanja</td>
+                                        <td class="text-center text-nowrap">Tanggal Pengeluaran</td>
+                                        <td class="text-center text-nowrap">Total Pengeluaran</td>
+                                        <td class="text-center text-nowrap">Action</td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Belanja Bidang Pemberdayaan Masyarakat</h3>
+                            </div>
+                            <div class="panel-body table-responsive table-full">
+                                <table class="table table-stripped table-bordered">
+
+                                    <tr>
+                                        <td class="text-center text-nowrap">Rincian Belanja</td>
+                                        <td class="text-center text-nowrap">Tanggal Pengeluaran</td>
+                                        <td class="text-center text-nowrap">Total Pengeluaran</td>
+                                        <td class="text-center text-nowrap">Action</td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../public/plugins/jquery/jquery-3.1.1.min.js"></script>
+    <script src="../../public/js/generateWarna.js"></script>
+</body>
+
+</html>
