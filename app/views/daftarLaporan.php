@@ -194,7 +194,7 @@
 
             <ul class="sidebar-nav">
 
-                <li><a href="dashboardKades.html"> <span>Dashboard</span></a></li>
+                <li><a href="dashboardKades.php"> <span>Dashboard</span></a></li>
 
                 <li><a href="profilKades.html"> <span>Profil</span></a></li>
 

@@ -8,7 +8,8 @@ class Admin extends Controller
     }
 
     public function daftarKades(){
-        $this->view('daftarKadesAdmin');
+        $data=$this->model('User_model')->getKades();
+        $this->view('daftarKadesAdmin',$data);
 
     }
 

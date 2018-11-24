@@ -52,8 +52,8 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <li><a type="button" data-toggle="modal" data-target="#addPage">Buat Laporan</a></li>
-                        <li><a href="#">Lihat Kades</a></li>
-                        <li><a href="#">Buat Akun Kades</a></li>
+                        <li><a href="<?php echo BASEURL; ?>/Admin/daftarKades">Lihat Kades</a></li>
+                        <li><a href="<?php echo BASEURL; ?>/Admin/buatAkunKades">Buat Akun Kades</a></li>
                     </ul>
                 </div>
             </div>
@@ -74,12 +74,12 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="dashboardAdmin.php" class="list-group-item active main-color-bg">
+                    <a href="dashboardAdmin.php" class="list-group-item">
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
                     </a>
-                    <a href="daftarLaporanAdmin.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge">12</span></a>
-                    <a href="buatLaporanAdmin.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Buat Laporan <span class="badge"></span></a>
-                    <a href="daftarKadesAdmin.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge">203</span></a>
+                    <a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin" class="list-group-item "><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge">12</span></a>
+                    <a href="<?php echo BASEURL;?>/Admin/buatLaporanAdmin" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Buat Laporan <span class="badge"></span></a>
+                    <a href="<?php echo BASEURL;?>/Admin/daftarKades" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge">203</span></a>
                 </div>
 
 

@@ -101,95 +101,18 @@
                         <th class="text-center">Kecamatan</th>
                         <th class="text-center">Action</th>
                       </tr>
+                    <?php foreach($data AS $kades) {?>
                   <tr>
-                    <td class="text-center text-nowrap">082345434567</td>
-                    <td class="text-center text-nowrap">Dheta Indra</td>
-                    <td class="text-center text-nowrap">dheta@gmail.com</td>
-                    <td class="text-center text-nowrap">Ajung</td>
-                    <td class="text-center text-nowrap">Ajung</td>
+                    <td class="text-center text-nowrap"><?=$kades['noTelepon']?></td>
+                    <td class="text-center text-nowrap"><?=$kades['nama']?></td>
+                    <td class="text-center text-nowrap"><?=$kades['email']?></td>
+                    <td class="text-center text-nowrap"><?=$kades['kelurahan']?></td>
+                    <td class="text-center text-nowrap"><?=$kades['kecamatan']?></td>
                     <td class="text-center text-nowrap">
                       <a href="lihatDesaAdmin.html"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
                   </tr>
 
-                  <tr>
-                    <td class="text-center text-nowrap">081330487876</td>
-                    <td class="text-center text-nowrap">Reinaldi Putra</td>
-                    <td class="text-center text-nowrap">reinaldi@gmail.com</td>
-                    <td class="text-center text-nowrap">Mangaran</td>
-                    <td class="text-center text-nowrap">Ajung</td>
-                    <td class="text-center text-nowrap">
-                      <a href="lihatDesaAdmin.html"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
-                  </tr>
-
-                  <tr>
-                    <td class="text-center text-nowrap">089876789876</td>
-                    <td class="text-center text-nowrap">Bilwasi&#039; Ilman</td>
-                    <td class="text-center text-nowrap">billy@gmail.com</td>
-                    <td class="text-center text-nowrap">Pancakarya</td>
-                    <td class="text-center text-nowrap">Ajung</td>
-                    <td class="text-center text-nowrap">
-                      <a href="lihatDesaAdmin.html"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
-                  </tr>
-
-                  <tr>
-                    <td class="text-center text-nowrap">082345434567</td>
-                    <td class="text-center text-nowrap">Dheta Indra</td>
-                    <td class="text-center text-nowrap">dheta@gmail.com</td>
-                    <td class="text-center text-nowrap">Ajung</td>
-                    <td class="text-center text-nowrap">Ajung</td>
-                    <td class="text-center text-nowrap">
-                      <a href="lihatDesaAdmin.html"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
-                  </tr>
-
-                  <tr>
-                    <td class="text-center text-nowrap">081330487876</td>
-                    <td class="text-center text-nowrap">Reinaldi Putra</td>
-                    <td class="text-center text-nowrap">reinaldi@gmail.com</td>
-                    <td class="text-center text-nowrap">Mangaran</td>
-                    <td class="text-center text-nowrap">Ajung</td>
-                    <td class="text-center text-nowrap">
-                      <a href="lihatDesaAdmin.html"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
-                  </tr>
-
-                  <tr>
-                    <td class="text-center text-nowrap">089876789876</td>
-                    <td class="text-center text-nowrap">Bilwasi&#039; Ilman</td>
-                    <td class="text-center text-nowrap">billy@gmail.com</td>
-                    <td class="text-center text-nowrap">Pancakarya</td>
-                    <td class="text-center text-nowrap">Ajung</td>
-                    <td class="text-center text-nowrap">
-                      <a href="lihatDesaAdmin.html"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
-                  </tr>
-
-                  <tr>
-                    <td class="text-center text-nowrap">082345434567</td>
-                    <td class="text-center text-nowrap">Dheta Indra</td>
-                    <td class="text-center text-nowrap">dheta@gmail.com</td>
-                    <td class="text-center text-nowrap">Ajung</td>
-                    <td class="text-center text-nowrap">Ajung</td>
-                    <td class="text-center text-nowrap">
-                      <a href="lihatDesaAdmin.html"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
-                  </tr>
-
-                  <tr>
-                    <td class="text-center text-nowrap">081330487876</td>
-                    <td class="text-center text-nowrap">Reinaldi Putra</td>
-                    <td class="text-center text-nowrap">reinaldi@gmail.com</td>
-                    <td class="text-center text-nowrap">Mangaran</td>
-                    <td class="text-center text-nowrap">Ajung</td>
-                    <td class="text-center text-nowrap">
-                      <a href="lihatDesaAdmin.html"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
-                  </tr>
-
-                  <tr>
-                    <td class="text-center text-nowrap">089876789876</td>
-                    <td class="text-center text-nowrap">Bilwasi&#039; Ilman</td>
-                    <td class="text-center text-nowrap">billy@gmail.com</td>
-                    <td class="text-center text-nowrap">Pancakarya</td>
-                    <td class="text-center text-nowrap">Ajung</td>
-                    <td class="text-center text-nowrap">
-                      <a href="lihatDesaAdmin.html"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
-                  </tr>
+                    <?php }?>
 
                 </table>
               </div>

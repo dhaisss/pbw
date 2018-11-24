@@ -43,18 +43,19 @@
         <div class="col-md-10">
           <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard <small><span>Ayo Kawal Anggaran Desa</span></small></h1>
         </div>
-        <div class="col-md-2">
-          <div class="dropdown create">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Navigasi Admin
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a href="daftarKadesAdmin.php">Lihat Kades</a></li>
-              <li><a href="buatAkunKades.php">Buat Akun Kades</a></li>
-            </ul>
+          <div class="col-md-2">
+              <div class="dropdown create">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      Navigasi Admin
+                      <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                      <li><a type="button" data-toggle="modal" data-target="#addPage">Buat Laporan</a></li>
+                      <li><a href="<?php echo BASEURL; ?>/Admin/daftarKades">Lihat Kades</a></li>
+                      <li><a href="<?php echo BASEURL; ?>/Admin/buatAkunKades">Buat Akun Kades</a></li>
+                  </ul>
+              </div>
           </div>
-        </div>
       </div>
     </div>
   </header>

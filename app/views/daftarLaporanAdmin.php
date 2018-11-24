@@ -50,9 +50,9 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a type="button" data-toggle="modal" data-target="#addPage">Buat Laporan</a></li>
-              <li><a href="#">Lihat Kades</a></li>
-              <li><a href="#">Buat Akun Kades</a></li>
+                <li><a type="button" data-toggle="modal" data-target="#addPage">Buat Laporan</a></li>
+                <li><a href="<?php echo BASEURL; ?>/Admin/daftarKades">Lihat Kades</a></li>
+                <li><a href="<?php echo BASEURL; ?>/Admin/buatAkunKades">Buat Akun Kades</a></li>
             </ul>
           </div>
         </div>

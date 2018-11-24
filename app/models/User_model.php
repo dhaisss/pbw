@@ -113,4 +113,11 @@ class User_model {
         $this->db->bind('email',$email);
         return $this->db->single();
     }
+
+    public function getKades()
+    {
+        $this->db->query('SELECT * FROM '. $this->table.' u JOIN kelurahan kl ON 
+        kl.idKelurahan = u.kelurahan JOIN kecamatan kc ON kc.idKecamatan=u.kecamatan Where level = 2');
+        return $this->db->resultSet();
+    }
 }
