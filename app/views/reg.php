@@ -54,6 +54,7 @@
                 <select class="form-control" name="kelurahan">
                   <option value="">Pilih Kelurahan : </option>
                 </select>
+                  <input type="hidden" name="idKelurahan">
               </div>
               <div class="form-group">
                 <h3>Nomor KTP</h3>
@@ -91,6 +92,7 @@
 
             $('select[name="kecamatan"]').on('change', function(){
                 var idKecamatan = $(this).val();
+
                 if(idKecamatan) {
                     $.ajax({
                         url: '<?=BASEURL;?>/Home/getKelurahan/'+idKecamatan,
@@ -103,12 +105,11 @@
                         success:function(data) {
 
                             $('select[name="kelurahan"]').empty();
+                        for (var i=0;i<data.length;i++){
+                            console.log(data[i]);
+                            $('select[name="kelurahan"]').append('<option value="'+data[i].idKelurahan+'">' + data[i].kelurahan + '</option>');
+                        }
 
-                            $.each(data, function(key, value){
-
-                                $('select[name="kelurahan"]').append('<option value="'+ key +'">' + value + '</option>');
-
-                            });
                         },
                         complete: function(){
                             $('#loader').css("visibility", "hidden");

@@ -37,7 +37,7 @@
                                 <!-- Left-aligned -->
                                 <div class="media">
                                     <div class="media-left">
-                                        <img src="../../public/image/yyy_0829997898767822.PNG" alt="Demo Avatar John Doe" class="media-object" style="width:60px;">
+                                        <img src="<?php echo BASEURL;?>/image/yyy_0829997898767822.PNG" alt="Demo Avatar John Doe" class="media-object" style="width:60px;">
                                     </div>
                                     <div class="media-body">
                                         <h4 class="media-heading">Dhais Firmansyah </h4>
@@ -50,7 +50,7 @@
                             </div>
 
                             <hr class="col-md-12">
-                            <img src="../../public/laporan/bersih.jpg" class="img-responsive">
+                            <img src="<?php echo BASEURL;?>/laporan/bersih.jpg" class="img-responsive">
 
                             <br />
                             <div class="col-md-10" style="text-align: justify-all;">
@@ -79,7 +79,7 @@
                                 <!-- Left-aligned -->
                                 <div class="media">
                                     <div class="media-left">
-                                        <img src="../../public/image/yyy_0982345678767821.PNG" alt="Demo Avatar John Doe" class="media-object" style="width:60px;">
+                                        <img src="<?php echo BASEURL;?>/image/yyy_0982345678767821.PNG" alt="Demo Avatar John Doe" class="media-object" style="width:60px;">
                                     </div>
                                     <div class="media-body">
                                         <h4 class="media-heading">Admin </h4>
@@ -92,7 +92,7 @@
                             </div>
 
                             <hr class="col-md-12">
-                            <img src="../../public/laporan/pakyan2.jpg" class="img-responsive">
+                            <img src="<?php echo BASEURL;?>/laporan/pakyan2.jpg" class="img-responsive">
 
                             <br />
                             <div class="col-md-10" style="text-align: justify-all;">
@@ -119,7 +119,7 @@
                                 <!-- Left-aligned -->
                                 <div class="media">
                                     <div class="media-left">
-                                        <img src="../../public/image/yyy_0982345678767821.PNG" alt="Demo Avatar John Doe" class="media-object" style="width:60px;">
+                                        <img src="<?php echo BASEURL;?>/image/yyy_0982345678767821.PNG" alt="Demo Avatar John Doe" class="media-object" style="width:60px;">
                                     </div>
                                     <div class="media-body">
                                         <h4 class="media-heading">Dhais Firmansyah </h4>
@@ -132,7 +132,7 @@
                             </div>
 
                             <hr class="col-md-12">
-                            <img src="../../public/laporan/jalan-rusak.jpg" class="img-responsive">
+                            <img src="<?php echo BASEURL;?>/laporan/jalan-rusak.jpg" class="img-responsive">
 
                             <br />
                             <div class="col-md-10" style="text-align: justify-all;">
@@ -162,10 +162,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AKAD</title>
-    <link rel="stylesheet" href="../../public/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../public/plugins/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../public/css/sidebarStyle.css">
-    <link rel="stylesheet" href="../../public/css/panelStyle.css">
+    <link rel="stylesheet" href="<?php echo BASEURL;?>/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo BASEURL;?>/plugins/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo BASEURL;?>/css/sidebarStyle.css">
+    <link rel="stylesheet" href="<?php echo BASEURL;?>/css/panelStyle.css">
     <style>
         html, body {
             background-color: white;
@@ -187,7 +187,7 @@
             </div>
             <div>
                 <div class="sidebar-avatar-image">
-                    <span><img style="border-radius:20px;" src="../../public/image/rei.jpg" width="100px" height="125px" align=center></span>
+                    <span><img style="border-radius:20px;" src="<?php echo BASEURL;?>/image/rei.jpg" width="100px" height="125px" align=center></span>
                 </div>
             </div>
             <div class="sidebar-avatar-text">  Reinaldi Putra  </div>
@@ -202,7 +202,7 @@
 
                 <li><a href="rincianBelanjaKades.html"> <span>Rincian Belanja Desa</span></a></li>
 
-                <li><a href="daftarLaporan.html"><span>Daftar Laporan</span></a></li>
+                <li><a href="daftarLaporan.php"><span>Daftar Laporan</span></a></li>
 
                 <li><a href="tentangDesaKades.html"><span>Tentang Desa</span></a></li>
 

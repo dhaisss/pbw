@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Area | Posts</title>
     <!-- Bootstrap core CSS -->
-    <link href="../../public/css1/bootstrap.min.css" rel="stylesheet">
-    <link href="../../public/css1/style.css" rel="stylesheet">
+    <link href="<?php echo BASEURL;?>/css1/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo BASEURL;?>/css1/style.css" rel="stylesheet">
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
@@ -25,10 +24,10 @@
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li ><a href="dashboardAdmin.html">Dashboard</a></li>
-          <li><a href="daftarLaporanAdmin.html">Laporan</a></li>
-          <li class="active"><a href="buatLaporanAdmin.html">Posts</a></li>
-          <li><a href="daftarKadesAdmin.html">Users</a></li>
+          <li ><a href="dashboardAdmin.php">Dashboard</a></li>
+          <li><a href="daftarLaporanAdmin.php">Laporan</a></li>
+          <li class="active"><a href="buatLaporanAdmin.php">Posts</a></li>
+          <li><a href="daftarKadesAdmin.php">Users</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Welcome, Brad</a></li>
@@ -51,8 +50,8 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a href="daftarKadesAdmin.html">Lihat Kades</a></li>
-              <li><a href="buatAkunKades.html">Buat Akun Kades</a></li>
+              <li><a href="daftarKadesAdmin.php">Lihat Kades</a></li>
+              <li><a href="buatAkunKades.php">Buat Akun Kades</a></li>
             </ul>
           </div>
         </div>
@@ -63,7 +62,7 @@
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="dashboardAdmin.html">Dashboard</a></li>
+          <li><a href="dashboardAdmin.php">Dashboard</a></li>
           <li class="active">Buat Laporan</li>
         </ol>
       </div>
@@ -74,12 +73,12 @@
         <div class="row">
           <div class="col-md-3">
             <div class="list-group">
-              <a href="dashboardAdmin.html" class="list-group-item">
+              <a href="dashboardAdmin.php" class="list-group-item">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="daftarLaporanAdmin.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge">12</span></a>
-              <a href="buatLaporanAdmin.html" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Buat Laporan <span class="badge"></span></a>
-              <a href="daftarKadesAdmin.html" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge">203</span></a>
+              <a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge">12</span></a>
+              <a href="<?php echo BASEURL;?>/Admin/buatLaporanAdmin" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Buat Laporan <span class="badge"></span></a>
+              <a href="<?php echo BASEURL;?>/Admin/daftarKades" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge">203</span></a>
             </div>
           </div>
 
@@ -91,7 +90,7 @@
               </div>
               <div class="panel-body">
 
-                <form enctype="multipart/form-data" action="daftarLaporanAdmin.html" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                <form enctype="multipart/form-data" action="<?=BASEURL;?>/Admin/buatLaporan" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
                   <div class="form-group">
                     <label for="name" class="col-md-2 control-label">Laporan</label>
                     <div class="col-md-6">
@@ -106,9 +105,12 @@
                   <div class="form-group">
                     <label for="kecamatan" class="col-md-2 control-label">Kecamatan</label>
                     <div class="col-md-4">
-                      <select name="kecamatan" class="form-control">
-                        <option value="">Pilih Kecamatan</option>
-                      </select>
+                        <select class="form-control" name="kecamatan">
+                            <option value="">Pilih Kecamatan : </option>
+                            <?php foreach ($data['kecamatan'] as $kec):?>
+                                <option value="<?= $kec['idKecamatan'];?>"><?= $kec['kecamatan'];?></option>
+                            <?php endforeach;?>
+                        </select>
                     </div>
                   </div>
                   <div class="form-group">
@@ -134,7 +136,7 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label"></label>
                     <div class="col-sm-6">
-                      <span><img id="foto" src="../../public/laporan/laporan.png" class="img-responsive" width="450px" height="300px" align=center></span>
+                      <span><img id="foto" src="<?php echo BASEURL;?>/laporan/laporan.png" class="img-responsive" width="450px" height="300px" align=center></span>
                     </div>
                   </div>
 
@@ -181,7 +183,44 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../../public/js1/bootstrap.min.js"></script>
+    <script src="<?php echo BASEURL;?>/js1/bootstrap.min.js"></script>
+  <script src="<?=BASEURL;?>/js/app.js"></script>
+  <script>
+      $(document).ready(function() {
+
+          $('select[name="kecamatan"]').on('change', function(){
+              var idKecamatan = $(this).val();
+
+              if(idKecamatan) {
+                  $.ajax({
+                      url: '<?=BASEURL;?>/Home/getKelurahan/'+idKecamatan,
+                      type:"GET",
+                      dataType:"json",
+                      beforeSend: function(){
+                          $('#loader').css("visibility", "visible");
+                      },
+
+                      success:function(data) {
+
+                          $('select[name="kelurahan"]').empty();
+                          for (var i=0;i<data.length;i++){
+                              console.log(data[i]);
+                              $('select[name="kelurahan"]').append('<option value="'+data[i].idKelurahan+'">' + data[i].kelurahan + '</option>');
+                          }
+
+                      },
+                      complete: function(){
+                          $('#loader').css("visibility", "hidden");
+                      }
+                  });
+              } else {
+                  $('select[name="kelurahan"]').empty();
+              }
+
+          });
+
+      });
+  </script>
   <script>
 
       function readURL(input) {

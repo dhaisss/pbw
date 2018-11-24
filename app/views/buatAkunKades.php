@@ -11,7 +11,7 @@
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
 </head>
 <body>
-
+<?php Flasher::flash(); ?>
 <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
@@ -25,14 +25,14 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="dashboardAdmin.html">Dashboard</a></li>
-                <li><a href="daftarLaporanAdmin.html">Laporan</a></li>
-                <li><a href="buatLaporanAdmin.html">Posts</a></li>
-                <li><a href="daftarKadesAdmin.html">Users</a></li>
+                <li class="active"><a href="dashboardAdmin.php">Dashboard</a></li>
+                <li><a href="daftarLaporanAdmin.php">Laporan</a></li>
+                <li><a href="buatLaporanAdmin.php">Posts</a></li>
+                <li><a href="daftarKadesAdmin.php">Users</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Welcome, Brad</a></li>
-                <li><a href="index.php">Logout</a></li>
+                <li><a href="<?php echo BASEURL; ?>/Home/logout">Logout</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -74,12 +74,12 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="dashboardAdmin.html" class="list-group-item active main-color-bg">
+                    <a href="dashboardAdmin.php" class="list-group-item active main-color-bg">
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
                     </a>
-                    <a href="daftarLaporanAdmin.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge">12</span></a>
-                    <a href="buatLaporanAdmin.html" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Buat Laporan <span class="badge"></span></a>
-                    <a href="daftarKadesAdmin.html" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge">203</span></a>
+                    <a href="daftarLaporanAdmin.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge">12</span></a>
+                    <a href="buatLaporanAdmin.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Buat Laporan <span class="badge"></span></a>
+                    <a href="daftarKadesAdmin.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge">203</span></a>
                 </div>
 
 
@@ -91,7 +91,7 @@
                         <h3 class="panel-title">Buat Akun Kepala Desa</h3>
                     </div>
                     <div class="panel-body">
-                        <form enctype="multipart/form-data" action="dashboardAdmin.html" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                        <form enctype="multipart/form-data" action="<?=BASEURL; ?>/Admin/insert" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
                             <div class="form-group">
                                 <label for="name" class="col-md-2 control-label">Nama Lengkap</label>
                                 <div class="col-md-6">
@@ -128,8 +128,11 @@
                             <div class="form-group">
                                 <label for="kecamatan" class="col-md-2 control-label">Kecamatan</label>
                                 <div class="col-md-4">
-                                    <select name="kecamatan" class="form-control">
-                                        <option value="">Pilih Kecamatan</option>
+                                    <select class="form-control" name="kecamatan">
+                                        <option value="">Pilih Kecamatan : </option>
+                                        <?php foreach ($data['kecamatan'] as $kec):?>
+                                            <option value="<?= $kec['idKecamatan'];?>"><?= $kec['kecamatan'];?></option>
+                                        <?php endforeach;?>
                                     </select>
                                 </div>
                             </div>
@@ -220,11 +223,13 @@
                         <span class="help-block"></span>
                     </div>
 
-
                     <div class="form-group">
                         <label>Kecamatan</label>
-                        <select name="kecamatan" class="form-control">
-                            <option value="">Pilih Kecamatan</option>
+                        <select class="form-control" name="kecamatan">
+                            <option value="">Pilih Kecamatan : </option>
+                            <?php foreach ($data['kecamatan'] as $kec):?>
+                                <option value="<?= $kec['idKecamatan'];?>"><?= $kec['kecamatan'];?></option>
+                            <?php endforeach;?>
                         </select>
                     </div>
 
@@ -262,34 +267,48 @@
     </div>
 </div>
 
-<script>
-    CKEDITOR.replace( 'editor1' );
-</script>
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../../public/js1/bootstrap.min.js"></script>
+
+<script src="<?=BASEURL;?>/js/app.js"></script>
 <script>
+    $(document).ready(function() {
 
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+        $('select[name="kecamatan"]').on('change', function(){
+            var idKecamatan = $(this).val();
 
-            reader.onload = function (e) {
-                $('#foto').attr('src', e.target.result);
+            if(idKecamatan) {
+                $.ajax({
+                    url: '<?=BASEURL;?>/Home/getKelurahan/'+idKecamatan,
+                    type:"GET",
+                    dataType:"json",
+                    beforeSend: function(){
+                        $('#loader').css("visibility", "visible");
+                    },
+
+                    success:function(data) {
+
+                        $('select[name="kelurahan"]').empty();
+                        for (var i=0;i<data.length;i++){
+                            console.log(data[i]);
+                            $('select[name="kelurahan"]').append('<option value="'+data[i].idKelurahan+'">' + data[i].kelurahan + '</option>');
+                        }
+
+                    },
+                    complete: function(){
+                        $('#loader').css("visibility", "hidden");
+                    }
+                });
+            } else {
+                $('select[name="kelurahan"]').empty();
             }
 
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+        });
 
-    $("#inpfoto").change(function () {
-
-        readURL(this);
     });
-
 </script>
 </body>
 </html>

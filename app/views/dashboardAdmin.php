@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Area | Dashboard</title>
     <!-- Bootstrap core CSS -->
-    <link href="../../public/css1/bootstrap.min.css" rel="stylesheet">
-    <link href="../../public/css1/style.css" rel="stylesheet">
+    <link href="<?php echo BASEURL;?>/css1/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo BASEURL;?>/css1/style.css" rel="stylesheet">
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
@@ -25,14 +24,14 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="dashboardAdmin.html">Dashboard</a></li>
-            <li><a href="daftarLaporanAdmin.html">Laporan</a></li>
-            <li><a href="buatLaporanAdmin.html">Posts</a></li>
-            <li><a href="daftarKadesAdmin.html">Users</a></li>
+            <li class="active"><a href="dashboardAdmin.php">Dashboard</a></li>
+            <li><a href="daftarLaporanAdmin.php">Laporan</a></li>
+            <li><a href="buatLaporanAdmin.php">Posts</a></li>
+            <li><a href="daftarKadesAdmin.php">Users</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Welcome, Brad</a></li>
-            <li><a href="index.php">Logout</a></li>
+            <li><a href="<?php echo BASEURL; ?>/Home/logout">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -52,8 +51,8 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li><a type="button" data-toggle="modal" data-target="#addPage">Buat Laporan</a></li>
-                <li><a href="daftarKadesAdmin.html">Lihat Kades</a></li>
-                <li><a href="buatAkunKades.html">Buat Akun Kades</a></li>
+                <li><a href="<?php echo BASEURL; ?>/Admin/daftarKades">Lihat Kades</a></li>
+                <li><a href="<?php echo BASEURL; ?>/Admin/buatAkunKades">Buat Akun Kades</a></li>
               </ul>
             </div>
           </div>
@@ -77,9 +76,9 @@
               <a href="#" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="daftarLaporanAdmin.html" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge">12</span></a>
-              <a href="buatLaporanAdmin.html" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Buat Laporan <span class="badge"></span></a>
-              <a href="daftarKadesAdmin.html" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge">203</span></a>
+              <a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge">12</span></a>
+              <a href="<?php echo BASEURL;?>/Admin/buatLaporanAdmin" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Buat Laporan <span class="badge"></span></a>
+              <a href="<?php echo BASEURL;?>/Admin/daftarKades" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge">203</span></a>
             </div>
 
 
@@ -109,12 +108,7 @@
                     <h4>Posts</h4>
                   </div>
                 </div>
-                <!--<div class="col-md-3">-->
-                  <!--<div class="well dash-box">-->
-                    <!--<h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> 12,334</h2>-->
-                    <!--<h4>Visitors</h4>-->
-                  <!--</div>-->
-                <!--</div>-->
+
               </div>
               </div>
 
@@ -221,7 +215,7 @@
 
               <div class="form-group">
                 <label></label>
-                <span><img id="foto" src="../../public/laporan/laporan.png" class="img-responsive" width="450px" height="300px" align=center></span>
+                <span><img id="foto" src="<?php echo BASEURL;?>/laporan/laporan.png" class="img-responsive" width="450px" height="300px" align=center></span>
               </div>
 
               <div class="form-group">
@@ -244,7 +238,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="/public/js1/bootstrap.min.js"></script>
+    <script src="<?php echo BASEURL;?>/js1/bootstrap.min.js"></script>
     <script>
 
         function readURL(input) {
@@ -266,4 +260,4 @@
 
     </script>
   </body>
-</html>
+

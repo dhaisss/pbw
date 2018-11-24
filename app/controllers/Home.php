@@ -2,7 +2,23 @@
 
 class Home extends Controller{
     public function index(){
-        $this->view('index');
+        if (!isset($_SESSION['level'])) {
+            $this->view('index');
+        }else{
+            if ($_SESSION['level'] == '1') {
+
+                $this->view('dashboardAdmin');
+            }else if($_SESSION['level'] == '2'){
+
+                $this->view('dashboardKades');
+            }
+            else if($_SESSION['level'] == '3'){
+
+                $this->view('dashboardGuest');
+            }
+        }
+
+
 
     }
 
@@ -18,16 +34,12 @@ class Home extends Controller{
     }
 
     public function getKelurahan($id) {
-        $kelurahan['kelurahan'] = $this->model('Kelurahan_model')->getKelurahanbyId($id);
-        return json_encode($kelurahan);
+        $kelurahan = $this->model('Kelurahan_model')->getKelurahanbyId($id);
+        echo json_encode($kelurahan);
     }
 
     public function insert()
     {
-
-//        if ($this->model('User_model')->register($_POST)>0) {
-//            $this->view(dashboardGuest);
-//        }
         $hasilRegis = $this->model('User_model')->register($_POST);
 
         if ($hasilRegis > 0) {

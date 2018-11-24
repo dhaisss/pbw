@@ -17,8 +17,8 @@ class Kelurahan_model {
 
     public function getKelurahanbyId ($id)
     {
-        $this->db->query('SELECT * FROM'. $this->table . 'WHERE id=id');
-        $this->db->bind('id',$id);
-        return $this->db->single();
+        $this->db->query('SELECT * FROM '. $this->table . ' WHERE kecamatan=:id');
+        $this->db->bind(':id',$id);
+        return $this->db->resultSet();
     }
 }

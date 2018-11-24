@@ -40,16 +40,17 @@ class User_model {
                   VALUES 
                   ('', :nama, :email, :alamat, :kecamatan, :kelurahan, :level, :noKTP, :noTelepon, :password, :foto )";
 
+
         $this->db->query($query);
 
         $this->db->bind('nama', $data['nama']);
         $this->db->bind('email', $data['email']);
         $this->db->bind('alamat', $data['alamat']);
         $this->db->bind('kecamatan', $data['kecamatan']);
-        $this->db->bind('kelurahan', 1);
+        $this->db->bind('kelurahan', $data['kelurahan']);
         $this->db->bind('level', 3);
         $this->db->bind('noKTP', $data['noktp']);
-        $this->db->bind('noTelepon', '0');
+        $this->db->bind('noTelepon', '-');
         $this->db->bind('password', $password);
         $this->db->bind('foto', 'foto.jpg');
 
@@ -58,6 +59,38 @@ class User_model {
         return $this->db->rowCount();
 
     }
+
+    public function registerKades($data){
+        $password = password_hash($data['password'], PASSWORD_DEFAULT);
+
+        $hasilEmail['user'] = $this->getUserByEmail($data['email']);
+        if (!empty($hasilEmail['user']['email']) > 0) {
+            return 'emailada' ;
+        }
+        $query = "INSERT INTO users 
+                  VALUES 
+                  ('', :nama, :email, :alamat, :kecamatan, :kelurahan, :level, :noKTP, :noTelepon, :password, :foto )";
+
+
+        $this->db->query($query);
+
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('email', $data['email']);
+        $this->db->bind('alamat', $data['alamat']);
+        $this->db->bind('kecamatan', $data['kecamatan']);
+        $this->db->bind('kelurahan', $data['kelurahan']);
+        $this->db->bind('level', 2);
+        $this->db->bind('noKTP', $data['noKTP']);
+        $this->db->bind('noTelepon', '-');
+        $this->db->bind('password', $password);
+        $this->db->bind('foto', 'foto.jpg');
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+
+    }
+
 
     public function loginUser($data)
     {
