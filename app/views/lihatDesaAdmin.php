@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Area | Users</title>
     <!-- Bootstrap core CSS -->
-    <link href="../../public/css1/bootstrap.min.css" rel="stylesheet">
-    <link href="../../public/css1/style.css" rel="stylesheet">
+    <link href="<?php echo BASEURL;?>/css1/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo BASEURL;?>/css1/style.css" rel="stylesheet">
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
 </head>
 <body>
@@ -25,14 +25,14 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="dashboardAdmin.php">Dashboard</a></li>
-                <li><a href="daftarLaporanAdmin.php">Laporan</a></li>
-                <li><a href="buatLaporanAdmin.php">Posts</a></li>
-                <li><a href="daftarKadesAdmin.php">Users</a></li>
+                <li><a href="<?php echo BASEURL;?>/Admin/index">Dashboard</a></li>
+                <li><a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin">Laporan</a></li>
+                <li><a href="<?php echo BASEURL;?>/Admin/buatLaporanAdmin">Posts</a></li>
+                <li class="active"><a href="<?php echo BASEURL;?>/Admin/daftarKades">Users</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Welcome, Brad</a></li>
-                <li><a href="index.php">Logout</a></li>
+                <li><a href="<?php echo BASEURL; ?>/Home/logout">Logout</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -52,8 +52,8 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <li><a type="button" data-toggle="modal" data-target="#addPage">Buat Laporan</a></li>
-                        <li><a href="daftarKadesAdmin.php">Lihat Kades</a></li>
-                        <li><a href="buatAkunKades.php">Buat Akun Kades</a></li>
+                        <li><a href="<?php echo BASEURL;?>/Admin/daftarKades">Lihat Kades</a></li>
+                        <li><a href="<?php echo BASEURL;?>/Admin/buatAkunKades">Buat Akun Kades</a></li>
                     </ul>
                 </div>
             </div>
@@ -79,9 +79,9 @@
                     <a href="dashboardAdmin.php" class="list-group-item">
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
                     </a>
-                    <a href="daftarLaporanAdmin.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge">12</span></a>
-                    <a href="buatLaporanAdmin.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Buat Laporan <span class="badge"></span></a>
-                    <a href="daftarKadesAdmin.php" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge">203</span></a>
+                    <a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge"></span></a>
+                    <a href="<?php echo BASEURL;?>/Admin/buatLaporanAdmin" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Buat Laporan <span class="badge"></span></a>
+                    <a href="<?php echo BASEURL;?>/Admin/daftarKades" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge">203</span></a>
                 </div>
 
 
@@ -97,39 +97,39 @@
 
                             <tr>
                                 <td class="text-left text-nowrap">Nama Desa:</td>
-                                <td class="lnr-text-align-left text-nowrap">Mangaran</td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['kelurahan']?></td>
                             </tr>
                             <tr>
                                 <td class="text-left text-nowrap">Kecamatan    :</td>
-                                <td class="lnr-text-align-left text-nowrap">Ajung</td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['kecamatan']?></td>
                             </tr>
                             <tr>
                                 <td class="text-left text-nowrap">Sekretaris Desa :</td>
-                                <td class="lnr-text-align-left text-nowrap">Wahib Irawan</td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['sekdes']?></td>
                             </tr>
                             <tr>
                                 <td class="text-left text-nowrap">Luas:</td>
-                                <td class="lnr-text-align-left text-nowrap">12000</td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['luas']?></td>
                             </tr>
                             <tr>
                                 <td class="text-left text-nowrap">Jumlah Penduduk:</td>
-                                <td class="lnr-text-align-left text-nowrap">12000000</td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['penduduk']?></td>
                             </tr>
                             <tr>
                                 <td class="text-left text-nowrap">Batas Utara:</td>
-                                <td class="lnr-text-align-left text-nowrap">Desa Mangaran Utara</td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['utara']?></td>
                             </tr>
                             <tr>
                                 <td class="text-left text-nowrap">Batas Selatan:</td>
-                                <td class="lnr-text-align-left text-nowrap">Desa Mangaran Selatan</td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['selatan']?></td>
                             </tr>
                             <tr>
                                 <td class="text-left text-nowrap">Batas Timur:</td>
-                                <td class="lnr-text-align-left text-nowrap">Desa Mangaran Timur</td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['timur']?></td>
                             </tr>
                             <tr>
                                 <td class="text-left text-nowrap">Batas Barat:</td>
-                                <td class="lnr-text-align-left text-nowrap">Desa Mangaran Barat</td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['barat']?></td>
                             </tr>
                         </table>
                     </div>
@@ -144,27 +144,27 @@
                         <table class="table table-stripped table-bordered">
                             <tr>
                                 <td class="text-left text-nowrap">Pendapatan Pajak Daerah:</td>
-                                <td class="lnr-text-align-left text-nowrap">12000000</td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['pajakDaerah']?></td>
                             </tr>
                             <tr>
                                 <td class="text-left text-nowrap">Pendapatan Asli Desa:</td>
-                                <td class="lnr-text-align-left text-nowrap">12000000</td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['pendapatan']?></td>
                             </tr>
                             <tr>
                                 <td class="text-left text-nowrap">Alokasi Dana Desa:</td>
-                                <td class="lnr-text-align-left text-nowrap">12000000</td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['alokasiDana']?></td>
                             </tr>
                             <tr>
                                 <td class="text-left text-nowrap">Dana Desa:</td>
-                                <td class="lnr-text-align-left text-nowrap">12000000</td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['danaDesa']?></td>
                             </tr>
                             <tr>
                                 <td class="text-left text-nowrap">Total Pendapatan Desa:</td>
-                                <td class="lnr-text-align-left text-nowrap">48000000</td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['total']?></td>
                             </tr>
                             <tr>
                                 <td class="text-left text-nowrap">SILPA:</td>
-                                <td class="lnr-text-align-left text-nowrap">45999999</td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['silpa']?></td>
                             </tr>
                         </table>
 
@@ -184,18 +184,14 @@
                                 <td class="text-center text-nowrap">Total Belanja</td>
                                 <td class="text-center text-nowrap">Tanggal Belanja</td>
                             </tr>
+                            <?php foreach($data['belanja'] AS $belanja) {?>
                             <tr>
-                                <td class="text-center text-nowrap">Pelaksanaan Pembangunan Desa</td>
-                                <td class="text-center text-nowrap">Perbaikan Irigasi</td>
-                                <td class="text-center text-nowrap">200000</td>
-                                <td class="text-center text-nowrap">2018-10-05 13:20:15</td>
+                                <td class="text-center text-nowrap"><?=$belanja['bidang']?></td>
+                                <td class="text-center text-nowrap"><?=$belanja['rincian']?></td>
+                                <td class="text-center text-nowrap"><?=$belanja['belanja']?></td>
+                                <td class="text-center text-nowrap"><?=$belanja['tanggalBelanja']?></td>
                             </tr>
-                            <tr>
-                                <td class="text-center text-nowrap">Pelaksanaan Pembangunan Desa</td>
-                                <td class="text-center text-nowrap">Pembangunan pos jaga</td>
-                                <td class="text-center text-nowrap">2000000</td>
-                                <td class="text-center text-nowrap">2018-10-05 17:54:37</td>
-                            </tr>
+                            <?php }?>
                         </table>
 
                     </div>
@@ -268,7 +264,7 @@
 
                     <div class="form-group">
                         <label></label>
-                        <span><img id="foto" src="../../public/laporan/laporan.png" class="img-responsive" width="450px" height="300px" align=center></span>
+                        <span><img id="foto" src="<?php echo BASEURL;?>/laporan/laporan.png" class="img-responsive" width="450px" height="300px" align=center></span>
                     </div>
 
                     <div class="form-group">
@@ -291,7 +287,7 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../../public/js1/bootstrap.min.js"></script>
+<script src="<?php echo BASEURL;?>/js1/bootstrap.min.js"></script>
 <script>
 
     function readURL(input) {

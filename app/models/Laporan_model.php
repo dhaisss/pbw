@@ -17,6 +17,15 @@ class Laporan_model {
         return $this->db->resultSet();
     }
 
+    public function getAllLaporanGuest()
+    {
+        $this->db->query('SELECT * FROM '. $this->table.' 
+        l JOIN users u ON u.id = l.users JOIN kelurahan kh ON kh.idKelurahan = l.kelurahan 
+        JOIN kecamatan kc ON kc.idKecamatan = l.kecamatan WHERE status=2 order by l.updated_at desc');
+        return $this->db->resultSet();
+    }
+
+
     public function insertLaporanAdmin($data){
 
         $nama 	= $_FILES['foto']['name'];

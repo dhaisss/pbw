@@ -77,7 +77,7 @@
               <a href="dashboardAdmin.php" class="list-group-item">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge">12</span></a>
+              <a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge"></span></a>
               <a href="<?php echo BASEURL;?>/Admin/buatLaporanAdmin" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Buat Laporan <span class="badge"></span></a>
               <a href="<?php echo BASEURL;?>/Admin/daftarKades" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge">203</span></a>
             </div>
@@ -96,7 +96,7 @@
                 </div>
                 <br>
 
-                  <?php foreach($data AS $laporan) {?>
+                  <?php foreach($data['laporan'] AS $laporan) {?>
                 <div class="row">
                   <div class="col-md-12">
                     <article>
@@ -155,66 +155,107 @@
     <!-- Modals -->
 
     <!-- Add Page -->
+
   <div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <form>
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Buat Laporan</h4>
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <form enctype="multipart/form-data" action="<?=BASEURL;?>/Admin/buatLaporan" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Buat Laporan</h4>
+                  </div>
+                  <div class="modal-body">
+
+                      <div class="form-group">
+                          <label>Laporan</label>
+                          <input id="laporan" type="text" class="form-control" name="laporan" required autofocus>
+                          <span class="help-block"></span>
+                      </div>
+
+                      <div class="form-group">
+                          <label>Kecamatan</label>
+                          <select name="kecamatan" class="form-control">
+                              <option value="">Pilih Kecamatan</option>
+                              <?php foreach ($data['kecamatan'] as $kec):?>
+                                  <option value="<?= $kec['idKecamatan'];?>"><?= $kec['kecamatan'];?></option>
+                              <?php endforeach;?>
+                          </select>
+                      </div>
+
+                      <div class="form-group">
+                          <label>Kelurahan</label>
+                          <select name="kelurahan" class="form-control">
+                              <option>Pilih Kelurahan</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group">
+                          <label>Status Laporan</label>
+                          <select name="status" class="form-control">
+                              <option value="1">Private</option>
+                              <option value="2">Public</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group">
+                          <label></label>
+                          <span><img id="foto" src="<?php echo BASEURL;?>/laporan/laporan.png" class="img-responsive" width="450px" height="300px" align=center></span>
+                      </div>
+
+                      <div class="form-group">
+                          <label>Masukkan Foto</label>
+                          <input class="filestyle" id="inpfoto" name="foto" type="file">
+                      </div>
+
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Buat laporan</button>
+                      </div>
+              </form>
           </div>
-          <div class="modal-body">
-
-            <div class="form-group">
-              <label>Laporan</label>
-              <input id="laporan" type="text" class="form-control" name="laporan" required autofocus>
-              <span class="help-block"></span>
-            </div>
-
-
-            <div class="form-group">
-              <label>Kecamatan</label>
-              <select name="kecamatan" class="form-control">
-                <option value="">Pilih Kecamatan</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Kelurahan</label>
-              <select name="kelurahan" class="form-control">
-                <option>Pilih Kelurahan</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Status Laporan</label>
-              <select name="status" class="form-control">
-                <option value="1">Private</option>
-                <option value="2">Public</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label></label>
-              <span><img id="foto" src="<?php echo BASEURL;?>/laporan/laporan.png" class="img-responsive" width="450px" height="300px" align=center></span>
-            </div>
-
-            <div class="form-group">
-              <label>Masukkan Foto</label>
-              <input class="filestyle" id="inpfoto" name="foto" type="file">
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Buat laporan</button>
-            </div>
-        </form>
       </div>
-    </div>
   </div>
+
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="<?php echo BASEURL;?>/js1/bootstrap.min.js"></script>
+  <script>
+      $(document).ready(function() {
+
+          $('select[name="kecamatan"]').on('change', function(){
+              var idKecamatan = $(this).val();
+
+              if(idKecamatan) {
+                  $.ajax({
+                      url: '<?=BASEURL;?>/Home/getKelurahan/'+idKecamatan,
+                      type:"GET",
+                      dataType:"json",
+                      beforeSend: function(){
+                          $('#loader').css("visibility", "visible");
+                      },
+
+                      success:function(data) {
+
+                          $('select[name="kelurahan"]').empty();
+                          for (var i=0;i<data.length;i++){
+                              console.log(data[i]);
+                              $('select[name="kelurahan"]').append('<option value="'+data[i].idKelurahan+'">' + data[i].kelurahan + '</option>');
+                          }
+
+                      },
+                      complete: function(){
+                          $('#loader').css("visibility", "hidden");
+                      }
+                  });
+              } else {
+                  $('select[name="kelurahan"]').empty();
+              }
+
+          });
+
+      });
+  </script>
   <script>
 
       function readURL(input) {

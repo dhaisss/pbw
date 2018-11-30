@@ -13,8 +13,8 @@ class Home extends Controller{
                 $this->view('dashboardKades');
             }
             else if($_SESSION['level'] == '3'){
-
-                $this->view('dashboardGuest');
+                $data['laporan']=$this->model('Laporan_model')->getAllLaporanGuest();
+                $this->view('dashboardGuest',$data);
             }
         }
 
@@ -68,7 +68,8 @@ class Home extends Controller{
                     $this->view('dashboardKades');
                 }else if($_SESSION['level'] == '3'){
                     Flasher::setFlash('Login','Berhasil','Selamat Datang','success');
-                    $this->view('dashboardGuest');
+                    $data['laporan']=$this->model('Laporan_model')->getAllLaporanGuest();
+                    $this->view('dashboardGuest',$data);
                 }else{
                     Flasher::setFlash('Login','Gagal','Type anda tidak di temukan','success');
                     $this->redirect('/Home/login');

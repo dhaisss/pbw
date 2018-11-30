@@ -28,4 +28,16 @@ class Flasher
 			unset($_SESSION['flash']);
 		}
 	}
+
+    public static function flashProfil()
+    {
+        if (isset($_SESSION['flash'])) {
+            echo '<div style="margin-left:267px" class="alert alert-'. $_SESSION['flash']['tipe'] .' alert-dismissable">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			Data '. $_SESSION['flash']['data'] .' <strong>'. $_SESSION['flash']['pesan'] .'</strong> '. $_SESSION['flash']['aksi'] .'
+			</div>';
+
+            unset($_SESSION['flash']);
+        }
+    }
 }

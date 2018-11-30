@@ -1,4 +1,4 @@
-
+<?php Flasher::flashProfil(); ?>
 <div id="main-panel" class="col-md-12">
     <div id="top-nav" >
         <nav class="navbar navbar-default">
@@ -19,128 +19,38 @@
                     <h3 class="panel-title">Data Aduan Desa</h3>
                 </div>
 
-
+                <?php foreach($data['laporan'] AS $laporan) {?>
                 <div class="row">
                     <div class="col-md-12">
-
-
-
                         <article>
                             <div style="margin-left: 10px;" class="row">
                                 <!-- Left-aligned -->
                                 <div class="media">
                                     <div class="media-left">
-                                        <img src="<?=BASEURL;?>/image/rei.jpg" alt="Demo Avatar John Doe" class="media-object" style="width:60px;">
+                                        <img src="<?=BASEURL;?>/image/<?=$laporan['foto']?>" alt="Demo Avatar John Doe" class="media-object" style="width:60px;">
                                     </div>
                                     <div class="media-body">
-                                        <h4 class="media-heading">Reinaldi Putra </h4>
-                                        <span><i>Posted on 2018-10-04</i></span>
+                                        <h4 class="media-heading"> <?=$laporan['nama']?> </h4>
+                                        <span><i>Posted on <?=$laporan['updated_at']?></i></span>
                                         <br>
-                                        <span><i>Kelurahan Mangaran, Kecamatan Ajung</i></span>
+                                        <span><i>Kelurahan <?=$laporan['kelurahan']?>, Kecamatan <?=$laporan['kecamatan']?></i></span>
                                     </div>
                                 </div>
 
                             </div>
 
                             <hr class="col-md-12">
-                            <img src="<?=BASEURL;?>/laporan/bersih.jpg" class="img-responsive">
+                            <img src="<?=BASEURL;?>/laporan/<?=$laporan['fotoLaporan']?>" class="img-responsive">
 
                             <br />
                             <div class="col-md-10" style="text-align: justify-all;">
-                                <p class="lead">Pembersihan got</p>
-
+                                <p class="lead"><?=$laporan['laporan']?></p>
                             </div>
                             <hr class="col-md-8">
-
-
-
                         </article>
-
-
                     </div>
                 </div>
-
-
-
-                <div class="row">
-                    <div class="col-md-12">
-
-
-
-                        <article>
-                            <div style="margin-left: 10px;" class="row">
-                                <!-- Left-aligned -->
-                                <div class="media">
-                                    <div class="media-left">
-                                        <img src="<?=BASEURL;?>/image/yyy_0982345678767821.PNG" alt="Demo Avatar John Doe" class="media-object" style="width:60px;">
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">Admin </h4>
-                                        <span><i>Posted on 2018-10-01</i></span>
-                                        <br>
-                                        <span><i>Kelurahan Ajung, Kecamatan Ajung</i></span>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <hr class="col-md-12">
-                            <img src="<?=BASEURL;?>/laporan/pakyan2.jpg" class="img-responsive">
-
-                            <br />
-                            <div class="col-md-10" style="text-align: justify-all;">
-                                <p class="lead">Wahib jubek</p>
-
-                            </div>
-                            <hr class="col-md-8">
-
-
-
-                        </article>
-
-
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-
-
-
-                        <article>
-                            <div style="margin-left: 10px;" class="row">
-                                <!-- Left-aligned -->
-                                <div class="media">
-                                    <div class="media-left">
-                                        <img src="<?=BASEURL;?>/image/yyy_0982345678767821.PNG" alt="Demo Avatar John Doe" class="media-object" style="width:60px;">
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">Admin </h4>
-                                        <span><i>Posted on 2018-09-29</i></span>
-                                        <br>
-                                        <span><i>Kelurahan Ajung, Kecamatan Ajung</i></span>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <hr class="col-md-12">
-                            <img src="<?=BASEURL;?>/laporan/jalan-rusak.jpg" class="img-responsive">
-
-                            <br />
-                            <div class="col-md-10" style="text-align: justify-all;">
-                                <p class="lead">Jalan rusak</p>
-
-                            </div>
-                            <hr class="col-md-8">
-
-
-
-                        </article>
-
-
-                    </div>
-                </div>
+                <?php }?>
 
             </div>
         </div>
@@ -172,6 +82,7 @@
 </head>
 
 <body>
+
 <div id="wrapper">
     <div id="sidebar">
         <div id="sidebar-wrapper">
@@ -180,20 +91,20 @@
             </div>
             <div>
                 <div class="sidebar-avatar-image">
-                    <span><img style="border-radius:20px;" src="<?=BASEURL;?>/image/yyy_0829997898767822.PNG" width="100px" height="125px" align=center></span>
+                    <span><img style="border-radius:20px;" src="<?=BASEURL;?>/image/<?=$_SESSION['foto']?>" width="100px" height="125px" align=center></span>
                 </div>
             </div>
-            <div class="sidebar-avatar-text">  Dhais Firmansyah  </div>
+            <div class="sidebar-avatar-text">  <?=$_SESSION['nama']?>  </div>
 
             <ul class="sidebar-nav">
 
-                <li><a href="dashboardGuest.php"> <span>Dashboard</span></a></li>
+                <li><a href="<?=BASEURL;?>/Guest/index"> <span>Dashboard</span></a></li>
 
-                <li><a href="profilGuest.html"> <span>Profil</span></a></li>
+                <li><a href="<?=BASEURL;?>/Guest/profilGuest"> <span>Profil</span></a></li>
 
-                <li><a href="buatLaporanGuest.html"> <span>Buat Laporan</span></a></li>
+                <li><a href="<?=BASEURL;?>/Guest/buatLaporanGuest"> <span>Buat Laporan</span></a></li>
 
-                <li><a href="daftarKadesGuest.html"> <span>Daftar Kepala Desa</span></a></li>
+                <li><a href="<?=BASEURL;?>/Guest/daftarKadesGuest"> <span>Daftar Kepala Desa</span></a></li>
 
 
 

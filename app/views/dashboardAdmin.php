@@ -177,7 +177,7 @@
     <div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <form>
+            <form enctype="multipart/form-data" action="<?=BASEURL;?>/Admin/buatLaporan" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" id="myModalLabel">Buat Laporan</h4>

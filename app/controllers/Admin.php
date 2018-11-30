@@ -20,7 +20,8 @@ class Admin extends Controller
     }
 
     public function daftarLaporanAdmin(){
-        $data=$this->model('Laporan_model')->getAllLaporan();
+        $data['laporan']=$this->model('Laporan_model')->getAllLaporan();
+        $data['kecamatan'] = $this->model('Kecamatan_model')->getAllKecamatan();
         $this->view('daftarLaporanAdmin',$data);
 
     }
@@ -31,6 +32,14 @@ class Admin extends Controller
 
     }
 
+    public function lihatDesa($id){
+        $data['desa'] = $this->model('Kelurahan_model')->getDetailbyId($id);
+        $data['total'] = $this->model('Kelurahan_model')->getTotalDana($id);
+        $data['silpa'] = $this->model('Kelurahan_model')->getSilpa($id);
+        $data['belanja'] = $this->model('Kelurahan_model')->getBelanja($id);
+        $this->view('lihatDesaAdmin',$data);
+
+    }
 
 
     public function insert()
@@ -53,7 +62,7 @@ class Admin extends Controller
 
         if ($hasilRegis > 0) {
             Flasher::setFlash('Laporan', 'Berhasil', 'ditambahkan', 'success');
-            $this->redirect('/Admin/dashboardAdmin');
+            $this->redirect('/Admin/daftarLaporanAdmin');
         } else if ($hasilRegis == 0 && $hasilRegis != null) {
             Flasher::setFlash('Laporan', 'Gagal', 'ditambahkan, Cek inputan anda', 'danger');
             $this->redirect('/Admin/buatLaporanAdmin');

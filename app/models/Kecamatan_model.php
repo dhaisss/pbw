@@ -15,4 +15,11 @@ class Kecamatan_model {
         return $this->db->resultSet();
     }
 
+
+    public function getKecamatanById($id)
+    {
+        $this->db->query('SELECT * FROM '. $this->table.' WHERE idKecamatan = '.$id);
+        return $this->db->single();
+    }
+
 }

@@ -208,9 +208,10 @@
 
 
 
-                <li><a href="index.php">
-                    <span>Logout</span>
-                </a>
+                <li><a href="<?php echo BASEURL; ?>/Home/logout">
+                        <span>Logout</span>
+                    </a>
+
                 </li>
 
             </ul>

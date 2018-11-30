@@ -1,15 +1,12 @@
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laravel</title>
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <link rel="stylesheet" href="../../public/css/sidebarStyle.css">
-    <link rel="stylesheet" href="../../public/css/panelStyle.css">
-    <link href="../../public/css1/bootstrap.min.css" rel="stylesheet">
-    <link href="../../public/css1/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?=BASEURL;?>/css/sidebarStyle.css">
+    <link rel="stylesheet" href="<?=BASEURL;?>/css/panelStyle.css">
+    <link href="<?=BASEURL;?>/css1/bootstrap.min.css" rel="stylesheet">
+    <link href="<?=BASEURL;?>/css1/style.css" rel="stylesheet">
     <style>
         html, body {
             background-color: white;
@@ -38,7 +35,7 @@
             </div>
             <div>
                 <div class="sidebar-avatar-image">
-                    <span><img style="border-radius:20px;" src="../../public/image/yyy_0982345678767821.PNG" width="100px" height="125px" align=center></span>
+                    <span><img style="border-radius:20px;" src="<?=BASEURL;?>/image/<?=$_SESSION['foto']?>" width="100px" height="125px" align=center></span>
                 </div>
             </div>
 
@@ -50,15 +47,15 @@
 
             <ul class="sidebar-nav">
 
-                <li><a href="dashboardGuest.php"> <span>Dashboard</span></a></li>
+                <li><a href="<?=BASEURL;?>/Guest/index"> <span>Dashboard</span></a></li>
 
-                <li><a href="profilGuest.html"> <span>Profil</span></a></li>
+                <li><a href="<?=BASEURL;?>/Guest/profilGuest"> <span>Profil</span></a></li>
 
-                <li><a href="buatLaporanGuest.html"> <span>Buat Laporan</span></a></li>
+                <li><a href="<?=BASEURL;?>/Guest/buatLaporanGuest"> <span>Buat Laporan</span></a></li>
 
-                <li><a href="daftarKadesGuest.html"> <span>Daftar Kepala Desa</span></a></li>
+                <li><a href="<?=BASEURL;?>/Guest/daftarKadesGuest"> <span>Daftar Kepala Desa</span></a></li>
 
-                <li><a href="index.php"</a><span>Logout</span></li>
+                <li><a href="<?=BASEURL;?>/Home/logout"</a><span>Logout</span></li>
 
 
             </ul>
@@ -115,12 +112,12 @@
                                         </tr>
 
                                         <tr>
-                                            <td class="text-center text-nowrap">081330487876</td>
-                                            <td class="text-center text-nowrap">Reinaldi Putra</td>
-                                            <td class="text-center text-nowrap">Mangaran</td>
-                                            <td class="text-center text-nowrap">Ajung</td>
+                                            <td class="text-center text-nowrap"><?=$data['kadesGuest']['noTelepon']?></td>
+                                            <td class="text-center text-nowrap"><?=$data['kadesGuest']['nama']?></td>
+                                            <td class="text-center text-nowrap"><?=$data['kadesGuest']['kelurahan']?></td>
+                                            <td class="text-center text-nowrap"><?=$data['kadesGuest']['kecamatan']?></td>
                                             <td class="text-center text-nowrap">
-                                                <a href="lihatDesaGuest.html"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
+                                                <a href="<?=BASEURL?>/Guest/detailKades/<?=$data['kadesGuest']['idKelurahan']?>"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
 
                                         </tr>
 
@@ -145,39 +142,19 @@
                                         <td class="text-center text-nowrap">Action</td>
                                     </tr>
 
-
+                                    <?php foreach($data['kades'] AS $kades) {?>
                                     <tr>
-                                        <td class="text-center text-nowrap">082345434567</td>
-                                        <td class="text-center text-nowrap">Dheta Indra</td>
-                                        <td class="text-center text-nowrap">Ajung</td>
-                                        <td class="text-center text-nowrap">Ajung</td>
+                                        <td class="text-center text-nowrap"><?=$kades['noTelepon']?></td>
+                                        <td class="text-center text-nowrap"><?=$kades['nama']?></td>
+                                        <td class="text-center text-nowrap"><?=$kades['kelurahan']?></td>
+                                        <td class="text-center text-nowrap"><?=$kades['kecamatan']?></td>
                                         <td class="text-center text-nowrap">
-                                            <a href="lihatDesaGuest.html"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
+                                            <a href="<?=BASEURL?>/Guest/detailKades/<?=$kades['idKelurahan']?>"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
 
 
                                     </tr>
+                                    <?php }?>
 
-                                    <tr>
-                                        <td class="text-center text-nowrap">081330487876</td>
-                                        <td class="text-center text-nowrap">Reinaldi Putra</td>
-                                        <td class="text-center text-nowrap">Mangaran</td>
-                                        <td class="text-center text-nowrap">Ajung</td>
-                                        <td class="text-center text-nowrap">
-                                            <a href="lihatDesaGuest.html"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
-
-
-                                    </tr>
-
-                                    <tr>
-                                        <td class="text-center text-nowrap">089876789876</td>
-                                        <td class="text-center text-nowrap">Bilwasi&#039; Ilman</td>
-                                        <td class="text-center text-nowrap">Pancakarya</td>
-                                        <td class="text-center text-nowrap">Ajung</td>
-                                        <td class="text-center text-nowrap">
-                                            <a href="lihatDesaGuest.html"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
-
-
-                                    </tr>
                                 </table>
 
                             </div>

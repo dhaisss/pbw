@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laravel</title>
-    <link rel="stylesheet" href="../../public/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../public/plugins/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../public/css/sidebarStyle.css">
-    <link rel="stylesheet" href="../../public/css/panelStyle.css">
+    <link rel="stylesheet" href="<?=BASEURL;?>/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?=BASEURL;?>/plugins/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?=BASEURL;?>/css/sidebarStyle.css">
+    <link rel="stylesheet" href="<?=BASEURL;?>/css/panelStyle.css">
     <style>
         html, body {
             background-color: white;
@@ -31,7 +31,7 @@
             </div>
             <div>
                 <div class="sidebar-avatar-image">
-                    <span><img style="border-radius:20px;" src="../../public/image/yyy_0982345678767821.PNG" width="100px" height="125px" align=center></span>
+                    <span><img style="border-radius:20px;" src="<?=BASEURL;?>/image/<?=$_SESSION['foto']?>" width="100px" height="125px" align=center></span>
                 </div>
             </div>
 
@@ -43,18 +43,18 @@
 
             <ul class="sidebar-nav">
 
-                <li><a href="dashboardGuest.php"> <span>Dashboard</span></a></li>
+                <li><a href="<?= BASEURL;?>/Guest/index"> <span>Dashboard</span></a></li>
 
-                <li><a href="profilGuest.html"> <span>Profil</span></a></li>
+                <li><a href="<?= BASEURL;?>/Guest/profilGuest"> <span>Profil</span></a></li>
 
-                <li><a href="buatLaporanGuest.html"> <span>Buat Laporan</span></a></li>
+                <li><a href="<?= BASEURL;?>/Guest/buatLaporanGuest"> <span>Buat Laporan</span></a></li>
 
-                <li><a href="daftarKadesGuest.html"> <span>Daftar Kepala Desa</span></a></li>
-
-
+                <li><a href="<?= BASEURL;?>/Guest/daftarKadesGuest"> <span>Daftar Kepala Desa</span></a></li>
 
 
-                <li><a href="index.php">
+
+
+                <li><a href="<?= BASEURL;?>/Home/logout">
                     <span>Logout</span>
                 </a>
 
@@ -107,39 +107,39 @@
 
                                         <tr>
                                             <td class="text-left text-nowrap">Nama Desa:</td>
-                                            <td class="lnr-text-align-left text-nowrap">Mangaran</td>
+                                            <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['kelurahan']?></td>
                                         </tr>
                                         <tr>
                                             <td class="text-left text-nowrap">Kecamatan    :</td>
-                                            <td class="lnr-text-align-left text-nowrap">Ajung</td>
+                                            <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['kecamatan']?></td>
                                         </tr>
                                         <tr>
                                             <td class="text-left text-nowrap">Sekretaris Desa :</td>
-                                            <td class="lnr-text-align-left text-nowrap">Wahib Irawan</td>
+                                            <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['sekdes']?></td>
                                         </tr>
                                         <tr>
                                             <td class="text-left text-nowrap">Luas:</td>
-                                            <td class="lnr-text-align-left text-nowrap">12000</td>
+                                            <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['luas']?></td>
                                         </tr>
                                         <tr>
                                             <td class="text-left text-nowrap">Jumlah Penduduk:</td>
-                                            <td class="lnr-text-align-left text-nowrap">12000000</td>
+                                            <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['penduduk']?></td>
                                         </tr>
                                         <tr>
                                             <td class="text-left text-nowrap">Batas Utara:</td>
-                                            <td class="lnr-text-align-left text-nowrap">Desa Mangaran Utara</td>
+                                            <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['utara']?></td>
                                         </tr>
                                         <tr>
                                             <td class="text-left text-nowrap">Batas Selatan:</td>
-                                            <td class="lnr-text-align-left text-nowrap">Desa Mangaran Selatan</td>
+                                            <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['selatan']?></td>
                                         </tr>
                                         <tr>
                                             <td class="text-left text-nowrap">Batas Timur:</td>
-                                            <td class="lnr-text-align-left text-nowrap">Desa Mangaran Timur</td>
+                                            <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['timur']?></td>
                                         </tr>
                                         <tr>
                                             <td class="text-left text-nowrap">Batas Barat:</td>
-                                            <td class="lnr-text-align-left text-nowrap">Desa Mangaran Barat</td>
+                                            <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['barat']?></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -217,8 +217,8 @@
         </div>
     </div>
 </div>
-<script src="../../public/plugins/jquery/jquery-3.1.1.min.js"></script>
-<script src="../../public/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?=BASEURL;?>/plugins/jquery/jquery-3.1.1.min.js"></script>
+<script src="<?=BASEURL;?>/plugins/bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 

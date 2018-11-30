@@ -1,15 +1,12 @@
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AKAD</title>
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <link rel="stylesheet" href="../../public/css/sidebarStyle.css">
-    <link rel="stylesheet" href="../../public/css/panelStyle.css">
-    <link href="../../public/css1/bootstrap.min.css" rel="stylesheet">
-    <link href="../../public/css1/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= BASEURL;?>/css/sidebarStyle.css">
+    <link rel="stylesheet" href="<?= BASEURL;?>/css/panelStyle.css">
+    <link href="<?= BASEURL;?>/css1/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= BASEURL;?>/css1/style.css" rel="stylesheet">
     <style>
         html, body {
             background-color: white;
@@ -23,6 +20,7 @@
 </head>
 
 <body>
+<?php Flasher::flashProfil(); ?>
 <div id="wrapper">
     <div id="sidebar">
         <div id="sidebar-wrapper">
@@ -32,7 +30,7 @@
             </div>
             <div>
                 <div class="sidebar-avatar-image">
-                    <span><img style="border-radius:20px;" src="../../public/image/yyy_0982345678767821.PNG" width="100px" height="125px" align=center></span>
+                    <span><img style="border-radius:20px;" src="<?=BASEURL;?>/image/<?=$_SESSION['foto']?>" width="100px" height="125px" align=center></span>
                 </div>
             </div>
 
@@ -44,13 +42,13 @@
 
             <ul class="sidebar-nav">
 
-                <li><a href="dashboardGuest.php"> <span>Dashboard</span></a></li>
+                <li><a href="<?=BASEURL;?>/Guest/index"> <span>Dashboard</span></a></li>
 
-                <li><a href="profilGuest.html"> <span>Profil</span></a></li>
+                <li><a href="<?=BASEURL;?>/Guest/profilGuest"> <span>Profil</span></a></li>
 
-                <li><a href="buatLaporanGuest.html"> <span>Buat Laporan</span></a></li>
+                <li><a href="<?=BASEURL;?>/Guest/buatLaporanGuest"> <span>Buat Laporan</span></a></li>
 
-                <li><a href="daftarKadesGuest.html"> <span>Daftar Kepala Desa</span></a></li>
+                <li><a href="daftarKadesGuest.php"> <span>Daftar Kepala Desa</span></a></li>
 
 
 
@@ -88,12 +86,12 @@
                     </div>
 
                     <div class="panel-body">
-                        <form enctype="multipart/form-data" action="dashboardGuest.php" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                        <form enctype="multipart/form-data" action="<?=BASEURL;?>/Guest/updateProfilGuest/<?=$_SESSION['id_user']?>" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
 
                             <div class="form-group">
                                 <label class="col-sm-4"></label>
                                 <div class="col-sm-6">
-                                    <span><img id="foto" src="../../public/image/yyy_0982345678767821.PNG" width="200px" height="250px" align=center></span>
+                                    <span><img id="foto" src="<?=BASEURL;?>/image/<?=$_SESSION['foto']?>" width="200px" height="250px" align=center></span>
                                 </div>
                             </div>
 
@@ -108,7 +106,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3">Nama Lengkap</label>
                                 <div class="col-sm-6">
-                                    <input type="text" value="Dhais Firmansyah" name="name" class="form-control">
+                                    <input type="text" value="<?=$_SESSION['nama']?>" name="name" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -120,19 +118,19 @@
                             <div class="form-group">
                                 <label class="col-sm-3">E-mail</label>
                                 <div class="col-sm-6">
-                                    <input type="email"  name="email" value=" dhaisfirmansyah16@gmail.com" class="form-control">
+                                    <input type="email"  name="email" value="<?=$_SESSION['email']?>" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3">Nomor Telepon</label>
                                 <div class="col-sm-6">
-                                    <input type="number"  name="noTelepon" value=" 082386199996" class="form-control">
+                                    <input type="text"  name="noTelepon" value="<?=$_SESSION['noTelepon']?>" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3">Alamat</label>
                                 <div class="col-sm-6">
-                                    <input type="text"  name="alamat" value=" Perum Muktisari" class="form-control">
+                                    <input type="text"  name="alamat" value="<?=$_SESSION['alamat']?>" class="form-control">
                                 </div>
                             </div>
 
@@ -140,17 +138,19 @@
                                 <label for="kecamatan" class="col-md-3">Kecamatan</label>
                                 <div class="col-md-6">
                                     <select name="kecamatan" class="form-control">
-                                        <option value="">Kec. Ajung</option>
-                                        <option value="1"> Ajung</option>
-                                        <option value="2"> Ambulu</option>
+                                        <option value="<?=$data['kecamatanUser']['idKecamatan']?>">Kec. <?=$data['kecamatanUser']['kecamatan']?></option>
+                                        <?php foreach ($data['kecamatan'] as $kec):?>
+                                            <option value="<?= $kec['idKecamatan'];?>"><?= $kec['kecamatan'];?></option>
+                                        <?php endforeach;?>
                                     </select>
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <label for="kelurahan" class="col-md-3">Kelurahan</label>
                                 <div class="col-md-6">
                                     <select name="kelurahan" class="form-control">
-                                        <option>Mangaran</option>
+                                        <option value="<?=$data['kelurahanUser']['idKelurahan']?>"><?=$data['kelurahanUser']['kelurahan']?></option>
                                     </select>
                                 </div>
                             </div>
@@ -160,7 +160,7 @@
                             <div class="form-group">
                                 <label for="noKTP" class="col-sm-3">No KTP</label>
                                 <div class="col-md-6">
-                                    <input type="text"  name="noKTP" value=" 1234567890987654" class="form-control">
+                                    <input type="text"  name="noKTP" value="<?=$_SESSION['noKTP']?>" class="form-control">
                                 </div>
                             </div>
 
@@ -178,14 +178,16 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
+<script src="<?=BASEURL;?>/js/app.js"></script>
+<script>
     $(document).ready(function() {
 
         $('select[name="kecamatan"]').on('change', function(){
             var idKecamatan = $(this).val();
+
             if(idKecamatan) {
                 $.ajax({
-                    url: '/kelurahan/get/'+idKecamatan,
+                    url: '<?=BASEURL;?>/Home/getKelurahan/'+idKecamatan,
                     type:"GET",
                     dataType:"json",
                     beforeSend: function(){
@@ -195,12 +197,11 @@
                     success:function(data) {
 
                         $('select[name="kelurahan"]').empty();
+                        for (var i=0;i<data.length;i++){
+                            console.log(data[i]);
+                            $('select[name="kelurahan"]').append('<option value="'+data[i].idKelurahan+'">' + data[i].kelurahan + '</option>');
+                        }
 
-                        $.each(data, function(key, value){
-
-                            $('select[name="kelurahan"]').append('<option value="'+ key +'">' + value + '</option>');
-
-                        });
                     },
                     complete: function(){
                         $('#loader').css("visibility", "hidden");

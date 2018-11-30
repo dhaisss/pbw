@@ -109,7 +109,7 @@
                     <td class="text-center text-nowrap"><?=$kades['kelurahan']?></td>
                     <td class="text-center text-nowrap"><?=$kades['kecamatan']?></td>
                     <td class="text-center text-nowrap">
-                      <a href="lihatDesaAdmin.html"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
+                      <a href="<?php echo BASEURL;?>/Admin/lihatDesa/<?=$kades['idKelurahan']?>"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
                   </tr>
 
                     <?php }?>
