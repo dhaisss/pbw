@@ -47,7 +47,7 @@
 
                 <li><a href="daftarLaporan.php"><span>Daftar Laporan</span></a></li>
 
-                <li><a href="tentangDesaKades.html"><span>Tentang Desa</span></a></li>
+                <li><a href="tentangDesaKades.php"><span>Tentang Desa</span></a></li>
 
 
 
@@ -97,7 +97,7 @@
                 <div class="panel-heading"></div>
 
                 <div class="panel-body">
-                    <form enctype="multipart/form-data" action="rincianBelanjaKades.php" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                    <form enctype="multipart/form-data" action="<?=BASEURL?>/Kades/insertRincian" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
                         <input type="hidden" name="_token" value="P3wxWWpTAThzu8THmI7vzzeTyuL4crHO02V2jEB3">
 
                         <div class="form-group">
@@ -126,7 +126,7 @@
                             <label for="name" class="col-md-2 control-label">Total Belanja</label>
 
                             <div class="col-md-6">
-                                <input id="belanja" type="text" class="form-control" name="belanja" value="" required autofocus>
+                                <input id="belanja" type="number" min="10000" class="form-control" name="belanja" value="" required autofocus>
 
                             </div>
                         </div>

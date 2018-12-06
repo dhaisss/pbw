@@ -28,12 +28,63 @@ class Kades extends Controller
 
     }
 
-    public function insertRincian($data){
+    public function insertRincian(){
+        $hasilRegis = $this->model('Belanja_model')->insertBelanja($_POST);
 
-        $this->view('buatBelanja');
+        if ($hasilRegis > 0) {
+            Flasher::setFlash('Rincian belanja', 'Berhasil', 'ditambahkan', 'success');
+            $this->redirect('/Kades/rincianBelanja/'.$_SESSION['kelurahan']);
+        } else if ($hasilRegis == 0 && $hasilRegis != null) {
+            Flasher::setFlash('Rincian', 'Gagal', 'ditambahkan, Cek inputan anda', 'danger');
+            $this->redirect('/Kades/buatRincian');
+
+        }
 
     }
 
+    public function ubahBelanja($id){
+        $data['belanja']=$this->model('Belanja_model')->getBelanjaById($id);
+        $this->view('ubahBelanja',$data);
+
+    }
+
+
+    public function tentangDesa($id){
+        $data['kelurahan']=$this->model('Kelurahan_model')->getKelurahanId($id);
+        $this->view('tentangDesaKades',$data);
+
+    }
+
+    public function updateBelanja($id){
+        $hasilRegis = $this->model('Belanja_model')->updateBelanja($_POST,$id);
+
+        if ($hasilRegis > 0) {
+            Flasher::setFlash('Perubahan', 'Berhasil', 'dilakukan', 'success');
+            $id = $_SESSION['kelurahan'];
+            $this->redirect('/Kades/rincianBelanja/'.$id);
+        }
+        else{
+            Flasher::setFlash('Perubahan', 'Gagal', 'diubah, Terjadi Kesalahan Jaringan', 'danger');
+            $this->redirect()->back();
+        }
+
+    }
+
+    public function updateTentang($id){
+
+        $hasilRegis = $this->model('Kelurahan_model')->updateTentang($_POST,$id);
+
+        if ($hasilRegis > 0) {
+            Flasher::setFlash('Perubahan', 'Berhasil', 'dilakukan', 'success');
+            $id = $_SESSION['kelurahan'];
+            $this->redirect('/Kades/rincianBelanja/'.$id);
+        }
+        else{
+            Flasher::setFlash('Perubahan', 'Gagal', 'diubah, Terjadi Kesalahan Jaringan', 'danger');
+            $this->redirect()->back();
+        }
+
+    }
 
 
 
@@ -83,7 +134,7 @@ class Kades extends Controller
 
     }
     public function buatLaporanKades()
-    {   echo($_POST);
+    {
         $hasilRegis = $this->model('Laporan_model')->insertLaporanKades($_POST);
 
         if ($hasilRegis > 0) {

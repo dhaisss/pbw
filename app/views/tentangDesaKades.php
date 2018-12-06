@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AKAD</title>
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <link rel="stylesheet" href="../../public/css/sidebarStyle.css">
-    <link rel="stylesheet" href="../../public/css/panelStyle.css">
-    <link href="../../public/css1/bootstrap.min.css" rel="stylesheet">
-    <link href="../../public/css1/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?=BASEURL?>/css/sidebarStyle.css">
+    <link rel="stylesheet" href="<?=BASEURL?>/css/panelStyle.css">
+    <link href="<?=BASEURL?>/css1/bootstrap.min.css" rel="stylesheet">
+    <link href="<?=BASEURL?>/css1/style.css" rel="stylesheet">
     <style>
         html, body {
             background-color: white;
@@ -34,35 +34,31 @@
             </div>
             <div>
                 <div class="sidebar-avatar-image">
-                    <span><img style="border-radius:20px;" src="../../public/image/yyy_0982345678767821.PNG" width="100px" height="125px" align=center></span>
+                    <span><img style="border-radius:20px;" src="<?=BASEURL;?>/image/<?=$_SESSION['foto']?>" width="100px" height="125px" align=center></span>
                 </div>
             </div>
-
-
-            <div class="sidebar-avatar">
-                <div class="sidebar-avatar-text"> Dhais Firmansyah </div>
-            </div>
-
+            <div class="sidebar-avatar-text">  <?=$_SESSION['nama']?>  </div>
 
             <ul class="sidebar-nav">
 
-                <li><a href="dashboardKades.php"> <span>Dashboard</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/index"> <span>Dashboard</span></a></li>
 
-                <li><a href="profilKades.php"> <span>Profil</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/profilKades"> <span>Profil</span></a></li>
 
-                <li><a href="buatLaporanKades.php"> <span>Buat Laporan</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/laporanSaya/<?=$_SESSION['id_user']?>"> <span>Laporan Saya</span></a></li>
 
-                <li><a href="rincianBelanjaKades.php"> <span>Rincian Belanja Desa</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/rincianBelanja/<?=$_SESSION['kelurahan']?>"> <span>Rincian Belanja Desa</span></a></li>
 
-                <li><a href="daftarLaporan.php"><span>Daftar Laporan</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/daftarLaporan/<?=$_SESSION['kelurahan']?>"><span>Daftar Laporan</span></a></li>
 
-                <li><a href="tentangDesaKades.html"><span>Tentang Desa</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/tentangDesa/<?=$_SESSION['kelurahan']?>"><span>Tentang Desa</span></a></li>
 
 
 
-                <li><a href="index.php">
-                    <span>Logout</span>
-                </a>
+                <li><a href="<?php echo BASEURL; ?>/Home/logout">
+                        <span>Logout</span>
+                    </a>
+
                 </li>
 
             </ul>
@@ -94,83 +90,83 @@
                     </div>
 
                     <div class="panel-body">
-                        <form enctype="multipart/form-data" action="dashboardKades.php" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                        <form enctype="multipart/form-data" action="<?=BASEURL?>/Kades/updateTentang/<?=$data['kelurahan']['idKelurahan']?>" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
 
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Nama Sekdes</label>
                                 <div class="col-sm-6">
-                                    <input type="text" value="Wahib Irawan" name="sekdes" class="form-control">
+                                    <input type="text" value="<?=$data['kelurahan']['sekdes']?>" name="sekdes" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Luas Daerah</label>
                                 <div class="col-sm-6">
-                                    <input type="text"  name="luas" value="12000" class="form-control">
+                                    <input type="text"  name="luas" value="<?=$data['kelurahan']['luas']?>" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Jumlah Penduduk</label>
                                 <div class="col-sm-6">
-                                    <input type="text"  name="penduduk" value="12000000" class="form-control">
+                                    <input type="text"  name="penduduk" value="<?=$data['kelurahan']['penduduk']?>" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Batas Utara</label>
                                 <div class="col-sm-6">
-                                    <input type="text"  name="utara" value="Desa Mangaran Utara" class="form-control">
+                                    <input type="text"  name="utara" value="<?=$data['kelurahan']['utara']?>" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Batas Selatan</label>
                                 <div class="col-sm-6">
-                                    <input type="text"  name="selatan" value="Desa Mangaran Selatan" class="form-control">
+                                    <input type="text"  name="selatan" value="<?=$data['kelurahan']['selatan']?>" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Batas Timur</label>
                                 <div class="col-sm-6">
-                                    <input type="text"  name="timur" value="Desa Mangaran Timur" class="form-control">
+                                    <input type="text"  name="timur" value="<?=$data['kelurahan']['timur']?>" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Batas Barat</label>
                                 <div class="col-sm-6">
-                                    <input type="text"  name="barat" value="Desa Mangaran Barat" class="form-control">
+                                    <input type="text"  name="barat" value="<?=$data['kelurahan']['barat']?>" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Bagi Hasil Pajak Daerah</label>
                                 <div class="col-sm-6">
-                                    <input type="text"  name="pajakDaerah" value="12000000" class="form-control">
+                                    <input type="number" min="10000"  name="pajakDaerah" value="<?=$data['kelurahan']['pajakDaerah']?>" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Pendapatan Asli Desa</label>
                                 <div class="col-sm-6">
-                                    <input type="text"  name="pendapatan" value="12000000" class="form-control">
+                                    <input type="number" min="10000" name="pendapatan" value="<?=$data['kelurahan']['pendapatan']?>" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Alokasi Dana Daerah</label>
                                 <div class="col-sm-6">
-                                    <input type="text"  name="alokasiDana" value="12000000" class="form-control">
+                                    <input type="number" min="10000" name="alokasiDana" value="<?=$data['kelurahan']['alokasiDana']?>" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Dana Desa</label>
                                 <div class="col-sm-6">
-                                    <input type="text"  name="danaDesa" value="12000000" class="form-control">
+                                    <input type="number" min="10000" name="danaDesa" value="<?=$data['kelurahan']['danaDesa']?>" class="form-control">
                                 </div>
                             </div>
 

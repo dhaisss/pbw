@@ -155,27 +155,27 @@
                                 <table class="table table-stripped table-bordered">
                                     <tr>
                                         <td class="text-left text-nowrap">Pendapatan Pajak Daerah:</td>
-                                        <td class="lnr-text-align-left text-nowrap">12000000</td>
+                                        <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['pajakDaerah']?></td>
                                     </tr>
                                     <tr>
                                         <td class="text-left text-nowrap">Pendapatan Asli Desa:</td>
-                                        <td class="lnr-text-align-left text-nowrap">12000000</td>
+                                        <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['pendapatan']?></td>
                                     </tr>
                                     <tr>
                                         <td class="text-left text-nowrap">Alokasi Dana Desa:</td>
-                                        <td class="lnr-text-align-left text-nowrap">12000000</td>
+                                        <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['alokasiDana']?></td>
                                     </tr>
                                     <tr>
                                         <td class="text-left text-nowrap">Dana Desa:</td>
-                                        <td class="lnr-text-align-left text-nowrap">12000000</td>
+                                        <td class="lnr-text-align-left text-nowrap"><?=$data['desa']['danaDesa']?></td>
                                     </tr>
                                     <tr>
                                         <td class="text-left text-nowrap">Total Pendapatan Desa:</td>
-                                        <td class="lnr-text-align-left text-nowrap">48000000</td>
+                                        <td class="lnr-text-align-left text-nowrap"><?=$data['total']['total']?></td>
                                     </tr>
                                     <tr>
                                         <td class="text-left text-nowrap">SILPA:</td>
-                                        <td class="lnr-text-align-left text-nowrap">45999999</td>
+                                        <td class="lnr-text-align-left text-nowrap"><?=$data['silpa']['silpa']?></td>
                                     </tr>
                                 </table>
 
@@ -194,18 +194,14 @@
                                         <td class="text-center text-nowrap">Total Belanja</td>
                                         <td class="text-center text-nowrap">Tanggal Belanja</td>
                                     </tr>
-                                    <tr>
-                                        <td class="text-center text-nowrap">Pelaksanaan Pembangunan Desa</td>
-                                        <td class="text-center text-nowrap">Perbaikan Irigasi</td>
-                                        <td class="text-center text-nowrap">1</td>
-                                        <td class="text-center text-nowrap">2018-10-05 13:20:15</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center text-nowrap">Pelaksanaan Pembangunan Desa</td>
-                                        <td class="text-center text-nowrap">Pembangunan pos jaga</td>
-                                        <td class="text-center text-nowrap">2000000</td>
-                                        <td class="text-center text-nowrap">2018-10-05 17:54:37</td>
-                                    </tr>
+                                    <?php foreach($data['belanja'] AS $belanja) {?>
+                                        <tr>
+                                            <td class="text-center text-nowrap"><?=$belanja['bidang']?></td>
+                                            <td class="text-center text-nowrap"><?=$belanja['rincian']?></td>
+                                            <td class="text-center text-nowrap"><?=$belanja['belanja']?></td>
+                                            <td class="text-center text-nowrap"><?=$belanja['tanggalBelanja']?></td>
+                                        </tr>
+                                    <?php }?>
                                 </table>
 
                             </div>

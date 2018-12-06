@@ -160,11 +160,11 @@
                             </tr>
                             <tr>
                                 <td class="text-left text-nowrap">Total Pendapatan Desa:</td>
-                                <td class="lnr-text-align-left text-nowrap"><?=$data['total']?></td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['total']['total']?></td>
                             </tr>
                             <tr>
                                 <td class="text-left text-nowrap">SILPA:</td>
-                                <td class="lnr-text-align-left text-nowrap"><?=$data['silpa']?></td>
+                                <td class="lnr-text-align-left text-nowrap"><?=$data['silpa']['silpa']?></td>
                             </tr>
                         </table>
 

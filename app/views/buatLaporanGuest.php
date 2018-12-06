@@ -35,19 +35,19 @@
 
 
             <div class="sidebar-avatar">
-                <div class="sidebar-avatar-text"> Dhais Firmansyah </div>
+                <div class="sidebar-avatar-text"> <?= $_SESSION['nama'];?> </div>
             </div>
 
 
             <ul class="sidebar-nav">
 
-                <li><a href="<?=BASEURL;?>/Guest/index"> <span>Dashboard</span></a></li>
+              <li><a href="<?=BASEURL;?>/Guest/index"> <span>Dashboard</span></a></li>
 
-                <li><a href="<?=BASEURL;?>/Guest/profilGuest"> <span>Profil</span></a></li>
+              <li><a href="<?=BASEURL;?>/Guest/profilGuest"> <span>Profil</span></a></li>
 
-                <li><a href="<?=BASEURL;?>/Guest/buatLaporanGuest"> <span>Buat Laporan</span></a></li>
+              <li><a href="<?=BASEURL;?>/Guest/laporanSaya/<?=$_SESSION['id_user']?>"> <span>Laporan Saya</span></a></li>
 
-                <li><a href="<?=BASEURL;?>/Guest/daftarKadesGuest"> <span>Daftar Kepala Desa</span></a></li>
+              <li><a href="<?=BASEURL;?>/Guest/daftarKadesGuest"> <span>Daftar Kepala Desa</span></a></li>
 
 
 
@@ -85,7 +85,7 @@
                 </div>
                 <div class="panel-body">
 
-                    <form enctype="multipart/form-data" action="dashboardGuest.php" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                    <form enctype="multipart/form-data" action="<?= BASEURL; ?>/Guest/buatLaporanGuest" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
                         <div class="form-group">
                             <label for="name" class="col-md-3 control-label">Laporan</label>
                             <div class="col-md-6">
@@ -100,9 +100,12 @@
                         <div class="form-group">
                             <label for="kecamatan" class="col-md-3 control-label">Kecamatan</label>
                             <div class="col-md-6">
-                                <select name="kecamatan" class="form-control">
-                                    <option value="">Pilih Kecamatan</option>
-                                </select>
+                                <select class="form-control" name="kecamatan">
+									 <option value="">Pilih Kecamatan : </option>
+										<?php foreach ($data['kecamatan'] as $kec):?>
+										<option value="<?= $kec['idKecamatan'];?>"><?= $kec['kecamatan'];?></option>
+										<?php endforeach;?>
+								</select>
                             </div>
                         </div>
                         <div class="form-group">
@@ -110,17 +113,6 @@
                             <div class="col-md-6">
                                 <select name="kelurahan" class="form-control">
                                     <option>Pilih Kelurahan</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Status Laporan</label>
-
-                            <div class="col-md-6">
-                                <select name="status" class="form-control">
-                                    <option value="1">Private</option>
-                                    <option value="2">Public</option>
                                 </select>
                             </div>
                         </div>
@@ -161,42 +153,43 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function() {
+ <script src="<?=BASEURL;?>/js/app.js"></script>
+    <script>
+        $(document).ready(function() {
 
-        $('select[name="kecamatan"]').on('change', function(){
-            var idKecamatan = $(this).val();
-            if(idKecamatan) {
-                $.ajax({
-                    url: '/kelurahan/get/'+idKecamatan,
-                    type:"GET",
-                    dataType:"json",
-                    beforeSend: function(){
-                        $('#loader').css("visibility", "visible");
-                    },
+            $('select[name="kecamatan"]').on('change', function(){
+                var idKecamatan = $(this).val();
 
-                    success:function(data) {
+                if(idKecamatan) {
+                    $.ajax({
+                        url: '<?=BASEURL;?>/Home/getKelurahan/'+idKecamatan,
+                        type:"GET",
+                        dataType:"json",
+                        beforeSend: function(){
+                            $('#loader').css("visibility", "visible");
+                        },
 
-                        $('select[name="kelurahan"]').empty();
+                        success:function(data) {
 
-                        $.each(data, function(key, value){
+                            $('select[name="kelurahan"]').empty();
+                        for (var i=0;i<data.length;i++){
+                            console.log(data[i]);
+                            $('select[name="kelurahan"]').append('<option value="'+data[i].idKelurahan+'">' + data[i].kelurahan + '</option>');
+                        }
 
-                            $('select[name="kelurahan"]').append('<option value="'+ key +'">' + value + '</option>');
+                        },
+                        complete: function(){
+                            $('#loader').css("visibility", "hidden");
+                        }
+                    });
+                } else {
+                    $('select[name="kelurahan"]').empty();
+                }
 
-                        });
-                    },
-                    complete: function(){
-                        $('#loader').css("visibility", "hidden");
-                    }
-                });
-            } else {
-                $('select[name="kelurahan"]').empty();
-            }
+            });
 
         });
-
-    });
-</script>
+    </script>
 <script>
 
     function readURL(input) {

@@ -49,9 +49,9 @@
 
                 <li><a href="<?=BASEURL;?>/Kades/rincianBelanja/<?=$_SESSION['kelurahan']?>"> <span>Rincian Belanja Desa</span></a></li>
 
-                <li><a href="<?=BASEURL;?>/Kades/daftarLaporan"><span>Daftar Laporan</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/daftarLaporan/<?=$_SESSION['kelurahan']?>"><span>Daftar Laporan</span></a></li>
 
-                <li><a href="<?=BASEURL;?>/Kades/tentangDesa"><span>Tentang Desa</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/tentangDesa/<?=$_SESSION['kelurahan']?>"><span>Tentang Desa</span></a></li>
 
 
 

@@ -51,7 +51,7 @@
 
                 <li><a href="<?=BASEURL;?>/Guest/profilGuest"> <span>Profil</span></a></li>
 
-                <li><a href="<?=BASEURL;?>/Guest/buatLaporanGuest"> <span>Buat Laporan</span></a></li>
+                <li><a href="<?=BASEURL;?>/Guest/buatLaporan"> <span>Buat Laporan</span></a></li>
 
                 <li><a href="<?=BASEURL;?>/Guest/daftarKadesGuest"> <span>Daftar Kepala Desa</span></a></li>
 

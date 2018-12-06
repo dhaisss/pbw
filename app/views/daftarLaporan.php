@@ -204,7 +204,7 @@
 
                 <li><a href="daftarLaporan.php"><span>Daftar Laporan</span></a></li>
 
-                <li><a href="tentangDesaKades.html"><span>Tentang Desa</span></a></li>
+                <li><a href="tentangDesaKades.php"><span>Tentang Desa</span></a></li>
 
 
 

@@ -29,6 +29,8 @@ class User_model {
         return $this->db->single();
     }
 
+
+
     public function updateKades($data,$id)
     {
 
@@ -226,8 +228,8 @@ class User_model {
         if (!empty($hasilEmail['user']['email']) > 0) {
             return 'emailada' ;
         }
-        $query = "INSERT INTO users 
-                  VALUES 
+        $query = "INSERT INTO users
+                  VALUES
                   ('', :nama, :email, :alamat, :kecamatan, :kelurahan, :level, :noKTP, :noTelepon, :password, :foto )";
 
 
@@ -250,6 +252,7 @@ class User_model {
 
     }
 
+
     public function registerKades($data){
         $password = password_hash($data['password'], PASSWORD_DEFAULT);
 
@@ -257,8 +260,8 @@ class User_model {
         if (!empty($hasilEmail['user']['email']) > 0) {
             return 'emailada' ;
         }
-        $query = "INSERT INTO users 
-                  VALUES 
+        $query = "INSERT INTO users
+                  VALUES
                   ('', :nama, :email, :alamat, :kecamatan, :kelurahan, :level, :noKTP, :noTelepon, :password, :foto )";
 
 
@@ -312,14 +315,14 @@ class User_model {
 
     public function getKades()
     {
-        $this->db->query('SELECT * FROM '. $this->table.' u JOIN kelurahan kl ON 
+        $this->db->query('SELECT * FROM '. $this->table.' u JOIN kelurahan kl ON
         kl.idKelurahan = u.kelurahan JOIN kecamatan kc ON kc.idKecamatan=u.kecamatan Where level = 2');
         return $this->db->resultSet();
     }
 
     public function getKadesByGuest($id)
     {
-        $this->db->query('SELECT * FROM '. $this->table.' u JOIN kelurahan kl ON 
+        $this->db->query('SELECT * FROM '. $this->table.' u JOIN kelurahan kl ON
         kl.idKelurahan = u.kelurahan JOIN kecamatan kc ON kc.idKecamatan=u.kecamatan Where level = 2 AND u.kelurahan ='.$id);
         return $this->db->single();
     }

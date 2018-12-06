@@ -65,7 +65,8 @@ class Home extends Controller{
                     $this->view('dashboardAdmin');
                 }else if($_SESSION['level'] == '2'){
                     Flasher::setFlash('Login','Berhasil','Selamat Datang','success');
-                    $this->view('dashboardKades');
+                    $data['laporan']=$this->model('Laporan_model')->getAllLaporan();
+                    $this->view('dashboardKades',$data);
                 }else if($_SESSION['level'] == '3'){
                     Flasher::setFlash('Login','Berhasil','Selamat Datang','success');
                     $data['laporan']=$this->model('Laporan_model')->getAllLaporanGuest();

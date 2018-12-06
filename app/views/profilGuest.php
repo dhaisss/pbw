@@ -36,19 +36,19 @@
 
 
             <div class="sidebar-avatar">
-                <div class="sidebar-avatar-text"> Dhais Firmansyah </div>
+                <div class="sidebar-avatar-text"> <?=$_SESSION['nama']?> </div>
             </div>
 
 
             <ul class="sidebar-nav">
 
-                <li><a href="<?=BASEURL;?>/Guest/index"> <span>Dashboard</span></a></li>
+              <li><a href="<?=BASEURL;?>/Guest/index"> <span>Dashboard</span></a></li>
 
-                <li><a href="<?=BASEURL;?>/Guest/profilGuest"> <span>Profil</span></a></li>
+              <li><a href="<?=BASEURL;?>/Guest/profilGuest"> <span>Profil</span></a></li>
 
-                <li><a href="<?=BASEURL;?>/Guest/buatLaporanGuest"> <span>Buat Laporan</span></a></li>
+              <li><a href="<?=BASEURL;?>/Guest/laporanSaya/<?=$_SESSION['id_user']?>"> <span>Laporan Saya</span></a></li>
 
-                <li><a href="daftarKadesGuest.php"> <span>Daftar Kepala Desa</span></a></li>
+              <li><a href="<?=BASEURL;?>/Guest/daftarKadesGuest"> <span>Daftar Kepala Desa</span></a></li>
 
 
 

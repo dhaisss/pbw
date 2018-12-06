@@ -4,22 +4,32 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-
-                    <h3><span class="glyphicon glyphicon-home"></span> Dashboard</h3>
+                    <!-- Navbar toggle button -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <!-- Sidebar toggle button -->
+                    <button type="button" class="sidebar-toggle">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <h3><span class="glyphicon glyphicon-home"></span> Laporan Saya</h3>
                 </div>
             </div>
         </nav>
     </div>
+    <a href="<?=BASEURL;?>/Guest/buatLaporan"><button class="btn btn-primary" style="margin-left: 15px;">Buat Laporan</button></a>
+    <br>
+    <br>
 
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Data Aduan Desa</h3>
-                </div>
 
-                <?php foreach($data['laporan'] AS $laporan) {?>
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Laporan Yang Telah dibuat</h3>
+            </div>
+
+            <?php foreach($data['laporan'] AS $laporan) {?>
                 <div class="row">
                     <div class="col-md-12">
                         <article>
@@ -47,14 +57,17 @@
                                 <p class="lead"><?=$laporan['laporan']?></p>
                             </div>
                             <hr class="col-md-8">
+                            <div><a href="<?=BASEURL;?>/Guest/editLaporanGuest/<?=$laporan['idLaporan']?>"><button type="submit" class="btn btn-success"> <font color="white">Edit Laporan</font></button></a>
+                                <a href="<?=BASEURL;?>/Guest/deleteLaporanGuest/<?=$laporan['idLaporan']?>"><button type="submit" class="btn btn-danger"> <font color="white">Hapus Laporan</font></button></a>
+                            </div>
                         </article>
                     </div>
                 </div>
-                <?php }?>
+            <?php }?>
 
-            </div>
         </div>
     </div>
+
 </div>
 </body>
 </html>
@@ -82,7 +95,6 @@
 </head>
 
 <body>
-
 <div id="wrapper">
     <div id="sidebar">
         <div id="sidebar-wrapper">
@@ -98,19 +110,19 @@
 
             <ul class="sidebar-nav">
 
-              <li><a href="<?=BASEURL;?>/Guest/index"> <span>Dashboard</span></a></li>
 
-              <li><a href="<?=BASEURL;?>/Guest/profilGuest"> <span>Profil</span></a></li>
+                <li><a href="<?=BASEURL;?>/Guest/index"> <span>Dashboard</span></a></li>
 
-              <li><a href="<?=BASEURL;?>/Guest/laporanSaya/<?=$_SESSION['id_user']?>"> <span>Laporan Saya</span></a></li>
+                <li><a href="<?=BASEURL;?>/Guest/profilGuest"> <span>Profil</span></a></li>
 
-              <li><a href="<?=BASEURL;?>/Guest/daftarKadesGuest"> <span>Daftar Kepala Desa</span></a></li>
+                <li><a href="<?=BASEURL;?>/Guest/laporanSaya/<?=$_SESSION['id_user']?>"> <span>Laporan Saya</span></a></li>
 
+                <li><a href="<?=BASEURL;?>/Guest/daftarKadesGuest"> <span>Daftar Kepala Desa</span></a></li>
 
 
                 <li><a href="<?php echo BASEURL; ?>/Home/logout">
-                    <span>Logout</span>
-                </a>
+                        <span>Logout</span>
+                    </a>
 
                 </li>
 
@@ -129,3 +141,5 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </body>
+
+</html>

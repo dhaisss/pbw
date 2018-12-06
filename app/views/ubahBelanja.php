@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laravel</title>
-    <link rel="stylesheet" href="../../public/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../public/plugins/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../public/css/sidebarStyle.css">
-    <link rel="stylesheet" href="../../public/css/panelStyle.css">
+    <link rel="stylesheet" href="<?=BASEURL?>/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?=BASEURL?>/plugins/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?=BASEURL?>/css/sidebarStyle.css">
+    <link rel="stylesheet" href="<?=BASEURL?>/css/panelStyle.css">
     <style>
         html, body {
             background-color: white;
@@ -30,7 +30,7 @@
             </div>
             <div>
                 <div class="sidebar-avatar-image">
-                    <span><img style="border-radius:20px;" src="../../public/image/rei.jpg" width="100px" height="125px" align=center></span>
+                    <span><img style="border-radius:20px;" src="<?=BASEURL?>/image/rei.jpg" width="100px" height="125px" align=center></span>
                 </div>
             </div>
             <div class="sidebar-avatar-text">  Reinaldi Putra  </div>
@@ -47,7 +47,7 @@
 
                 <li><a href="daftarLaporan.php"><span>Daftar Laporan</span></a></li>
 
-                <li><a href="tentangDesaKades.html"><span>Tentang Desa</span></a></li>
+                <li><a href="tentangDesaKades.php"><span>Tentang Desa</span></a></li>
 
 
 
@@ -97,12 +97,13 @@
                 <div class="panel-heading"></div>
 
                 <div class="panel-body">
-                    <form enctype="multipart/form-data" action="rincianBelanjaKades.php" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                    <form enctype="multipart/form-data" action="<?=BASEURL?>/Kades/updateBelanja/<?=$data['belanja']['idBelanja']?>" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">Status Laporan</label>
                             <div class="col-md-6">
                                 <select name="bidang" class="form-control">
+                                    <option value="<?=$data['belanja']['idBidang']?>"><?=$data['belanja']['bidang']?></option>
                                     <option value="1">Penyelenggaraan Pemerintahan Desa</option>
                                     <option value="2">Pelaksanaan Pembangunan Desa</option>
                                     <option value="3">Pembinaan Kemasyarakatan</option>
@@ -114,7 +115,7 @@
                         <div class="form-group">
                             <label for="name" class="col-md-2 control-label">Rincian Belanja</label>
                             <div class="col-md-6">
-                                <input id="rincian" type="text" class="form-control" name="rincian" value="Pembersihan Got" required autofocus>
+                                <input id="rincian" type="text" class="form-control" name="rincian" value="<?=$data['belanja']['rincian']?>" required autofocus>
 
                             </div>
                         </div>
@@ -123,7 +124,7 @@
                             <label for="name" class="col-md-2 control-label">Total Belanja</label>
 
                             <div class="col-md-6">
-                                <input id="belanja" type="text" class="form-control" name="belanja" value="20000000" required autofocus>
+                                <input id="belanja" type="number" min="10000" class="form-control" name="belanja" value="<?=$data['belanja']['belanja']?>" required autofocus>
 
                             </div>
                         </div>
@@ -149,9 +150,9 @@
 
 
 
-<script src="../../public/plugins/jquery/jquery-3.1.1.min.js"></script>
-<script src="../../public/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="../../public/js/generateWarna.js"></script>
+<script src="<?=BASEURL?>/plugins/jquery/jquery-3.1.1.min.js"></script>
+<script src="<?=BASEURL?>/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?=BASEURL?>/js/generateWarna.js"></script>
 </body>
 
 </html>

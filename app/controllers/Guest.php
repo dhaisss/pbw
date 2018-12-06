@@ -16,9 +16,64 @@ class Guest extends Controller
 
     }
 
-    public function buatLaporanGuest(){
-        $this->view('buatLaporanGuest');
+    public function laporanSaya($id){
+        $data['laporan']=$this->model('Laporan_model')->getLaporanById($id);
+        $this->view('laporanSayaGuest',$data);
 
+    }
+
+    public function deleteLaporanGuest($id){
+        $data['delete']=$this->model('Laporan_model')->deleteLaporan($id);
+        $data['laporan']=$this->model('Laporan_model')->getLaporanById($id);
+        // $this->view('laporanSayaGuest',$data);
+        $this->redirect('/Guest/laporanSaya/'. $_SESSION['id_user']);
+
+
+    }
+
+
+    public function editLaporanGuest($id){
+        $data['laporan']=$this->model('Laporan_model')->getLaporanId($id);
+        $this->view('editLaporanGuest',$data);
+
+    }
+
+    public function updateLaporan($id){
+        $hasilRegis = $this->model('Laporan_model')->updateLaporanGuest($_POST,$id);
+
+        if ($hasilRegis > 0) {
+            Flasher::setFlash('Perubahan', 'Berhasil', 'dilakukan', 'success');
+            $id = $_SESSION['id_user'];
+
+            $this->redirect('/Guest/LaporanSaya/'.$id);
+        }
+        else{
+            Flasher::setFlash('Perubahan', 'Gagal', 'diubah, Terjadi Kesalahan Jaringan', 'danger');
+            $this->redirect()->back();
+        }
+
+    }
+
+    public function buatLaporan(){
+		    $data['kecamatanUser']=$this->model('Kecamatan_model')->getKecamatanById($_SESSION['kecamatan']);
+        $data['kelurahanUser']=$this->model('Kelurahan_model')->getKelurahanId($_SESSION['kelurahan']);
+		    $data['kecamatan'] = $this->model('Kecamatan_model')->getAllKecamatan();
+        $this->view('buatLaporanGuest', $data);
+
+    }
+
+    public function buatLaporanGuest()
+    {   echo($_POST);
+        $hasilRegis = $this->model('Laporan_model')->insertLaporanGuest($_POST);
+
+        if ($hasilRegis > 0) {
+            Flasher::setFlash('Laporan', 'Berhasil', 'ditambahkan', 'success');
+            $this->redirect('/Guest/dashboardGuest');
+        } else if ($hasilRegis == 0 && $hasilRegis != null) {
+            Flasher::setFlash('Laporan', 'Gagal', 'ditambahkan, Cek inputan anda', 'danger');
+            $this->redirect('/Guest/buatLaporanGuest');
+
+        }
     }
 
     public function daftarKadesGuest(){
@@ -35,6 +90,8 @@ class Guest extends Controller
         $data['total'] = $this->model('Kelurahan_model')->getTotalDana($id);
         $data['silpa'] = $this->model('Kelurahan_model')->getSilpa($id);
         $data['belanja'] = $this->model('Kelurahan_model')->getBelanja($id);
+
+
         $this->view('lihatDesaGuest',$data);
 
     }

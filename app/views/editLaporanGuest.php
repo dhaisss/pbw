@@ -33,28 +33,23 @@
             </div>
             <div>
                 <div class="sidebar-avatar-image">
-                    <span><img style="border-radius:20px;" src="<?=BASEURL;?>/image/yyy_0982345678767821.PNG" width="100px" height="125px" align=center></span>
+                    <span><img style="border-radius:20px;" src="<?=BASEURL;?>/image/<?=$_SESSION['foto']?>" width="100px" height="125px" align=center></span>
                 </div>
             </div>
 
 
             <div class="sidebar-avatar">
-                <div class="sidebar-avatar-text"> Dhais Firmansyah </div>
+                <div class="sidebar-avatar-text"> <?=$_SESSION['nama']?> </div>
             </div>
 
             <ul class="sidebar-nav">
+              <li><a href="<?=BASEURL;?>/Guest/index"> <span>Dashboard</span></a></li>
 
-                <li><a href="dashboardKades.php"> <span>Dashboard</span></a></li>
+              <li><a href="<?=BASEURL;?>/Guest/profilGuest"> <span>Profil</span></a></li>
 
-                <li><a href="profilKades.php"> <span>Profil</span></a></li>
+              <li><a href="<?=BASEURL;?>/Guest/laporanSaya/<?=$_SESSION['id_user']?>"> <span>Laporan Saya</span></a></li>
 
-                <li><a href="buatLaporanKades.php"> <span>Buat Laporan</span></a></li>
-
-                <li><a href="rincianBelanjaKades.php"> <span>Rincian Belanja Desa</span></a></li>
-
-                <li><a href="daftarLaporan.php"><span>Daftar Laporan</span></a></li>
-
-                <li><a href="tentangDesaKades.php"><span>Tentang Desa</span></a></li>
+              <li><a href="<?=BASEURL;?>/Guest/daftarKadesGuest"> <span>Daftar Kepala Desa</span></a></li>
 
 
 
@@ -93,7 +88,7 @@
                 </div>
                 <div class="panel-body">
 
-                    <form enctype="multipart/form-data" action="<?=BASEURL;?>/Kades/updateLaporan/<?=$data['laporan']['idLaporan']?>" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                    <form enctype="multipart/form-data" action="<?=BASEURL;?>/Guest/updateLaporan/<?=$data['laporan']['idLaporan']?>" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
                         <div class="form-group">
                             <label for="name" class="col-md-3 control-label">Laporan</label>
                             <div class="col-md-6">
@@ -121,16 +116,7 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Status Laporan</label>
 
-                            <div class="col-md-6">
-                                <select name="status" class="form-control">
-
-                                    <option value="<?=$data['laporan']['idStatus']?>"><?=$data['laporan']['status']?></option>
-                                    <option value="1">Private</option>
-                                    <option value="2">Public</option>
-                                </select>
-                            </div>
-                        </div>
-
+                      
                         <div class="form-group">
                             <label class="col-sm-3 control-label"></label>
                             <div class="col-sm-6">

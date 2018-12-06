@@ -2,6 +2,8 @@
 
 class Admin extends Controller
 {
+
+
     public function index(){
         $this->view('dashboardAdmin');
 
@@ -25,6 +27,7 @@ class Admin extends Controller
         $this->view('daftarLaporanAdmin',$data);
 
     }
+
 
     public function buatAkunKades(){
         $data['kecamatan'] = $this->model('Kecamatan_model')->getAllKecamatan();
