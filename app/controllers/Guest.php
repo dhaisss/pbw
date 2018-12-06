@@ -39,6 +39,8 @@ class Guest extends Controller
 
     }
 
+
+
     public function updateProfilGuest($id){
         $hasilRegis = $this->model('User_model')->update($_POST,$id);
 

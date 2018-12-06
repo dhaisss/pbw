@@ -196,11 +196,11 @@
 
                 <li><a href="dashboardKades.php"> <span>Dashboard</span></a></li>
 
-                <li><a href="profilKades.html"> <span>Profil</span></a></li>
+                <li><a href="profilKades.php"> <span>Profil</span></a></li>
 
-                <li><a href="buatLaporanKades.html"> <span>Buat Laporan</span></a></li>
+                <li><a href="buatLaporanKades.php"> <span>Buat Laporan</span></a></li>
 
-                <li><a href="rincianBelanjaKades.html"> <span>Rincian Belanja Desa</span></a></li>
+                <li><a href="rincianBelanjaKades.php"> <span>Rincian Belanja Desa</span></a></li>
 
                 <li><a href="daftarLaporan.php"><span>Daftar Laporan</span></a></li>
 

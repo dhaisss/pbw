@@ -12,55 +12,61 @@
                     <button type="button" class="sidebar-toggle">
                         <i class="fa fa-bars"></i>
                     </button>
-               <h3><span class="glyphicon glyphicon-home"></span> Dashboard</h3>
+                    <h3><span class="glyphicon glyphicon-home"></span> Laporan Saya</h3>
                 </div>
             </div>
         </nav>
     </div>
+    <a href="<?=BASEURL;?>/Kades/buatLaporan"><button class="btn btn-primary" style="margin-left: 15px;">Buat Laporan</button></a>
+    <br>
+    <br>
 
 
 
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Data Aduan Desa</h3>
-                </div>
-
-                <?php foreach($data['laporan'] AS $laporan) {?>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <article>
-                                <div style="margin-left: 10px;" class="row">
-                                    <!-- Left-aligned -->
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <img src="<?=BASEURL;?>/image/<?=$laporan['foto']?>" alt="Demo Avatar John Doe" class="media-object" style="width:60px;">
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="media-heading"> <?=$laporan['nama']?> </h4>
-                                            <span><i>Posted on <?=$laporan['updated_at']?></i></span><span><i> Sebagai <?=$laporan['Level']?></i></span>
-                                            <br>
-                                            <span><i>Kelurahan <?=$laporan['kelurahan']?>, Kecamatan <?=$laporan['kecamatan']?></i></span>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <hr class="col-md-12">
-                                <img src="<?=BASEURL;?>/laporan/<?=$laporan['fotoLaporan']?>" class="img-responsive">
-
-                                <br />
-                                <div class="col-md-10" style="text-align: justify-all;">
-                                    <p class="lead"><?=$laporan['laporan']?></p>
-                                </div>
-                                <hr class="col-md-8">
-                            </article>
-                        </div>
-                    </div>
-                <?php }?>
-
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Laporan Yang Telah dibuat</h3>
             </div>
+
+            <?php foreach($data['laporan'] AS $laporan) {?>
+                <div class="row">
+                    <div class="col-md-12">
+                        <article>
+                            <div style="margin-left: 10px;" class="row">
+                                <!-- Left-aligned -->
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="<?=BASEURL;?>/image/<?=$laporan['foto']?>" alt="Demo Avatar John Doe" class="media-object" style="width:60px;">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"> <?=$laporan['nama']?> </h4>
+                                        <span><i>Posted on <?=$laporan['updated_at']?></i></span>
+                                        <br>
+                                        <span><i>Kelurahan <?=$laporan['kelurahan']?>, Kecamatan <?=$laporan['kecamatan']?></i></span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <hr class="col-md-12">
+                            <img src="<?=BASEURL;?>/laporan/<?=$laporan['fotoLaporan']?>" class="img-responsive">
+
+                            <br />
+                            <div class="col-md-10" style="text-align: justify-all;">
+                                <p class="lead"><?=$laporan['laporan']?></p>
+                            </div>
+                            <hr class="col-md-8">
+                            <div><a href="<?=BASEURL;?>/Kades/editLaporanKades/<?=$laporan['idLaporan']?>"><button type="submit" class="btn btn-success"> <font color="white">Edit Laporan</font></button></a>
+                                <a href="<?=BASEURL;?>/Kades/deleteLaporanKades/<?=$laporan['idLaporan']?>"><button type="submit" class="btn btn-danger"> <font color="white">Hapus Laporan</font></button></a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            <?php }?>
+
         </div>
+    </div>
 
 </div>
 </body>

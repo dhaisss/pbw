@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laravel</title>
-    <link rel="stylesheet" href="../../public/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../public/plugins/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../public/css/sidebarStyle.css">
-    <link rel="stylesheet" href="../../public/css/panelStyle.css">
+    <link rel="stylesheet" href="<?=BASEURL?>/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?=BASEURL?>/plugins/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?=BASEURL?>/css/sidebarStyle.css">
+    <link rel="stylesheet" href="<?=BASEURL?>/css/panelStyle.css">
     <style>
         html, body {
             background-color: white;
@@ -30,28 +30,30 @@
             </div>
             <div>
                 <div class="sidebar-avatar-image">
-                    <span><img style="border-radius:20px;" src="../../public/image/rei.jpg" width="100px" height="125px" align=center></span>
+                    <span><img style="border-radius:20px;" src="<?=BASEURL;?>/image/<?=$_SESSION['foto']?>" width="100px" height="125px" align=center></span>
                 </div>
             </div>
-            <div class="sidebar-avatar-text">  Reinaldi Putra  </div>
+            <div class="sidebar-avatar-text">  <?=$_SESSION['nama']?>  </div>
 
             <ul class="sidebar-nav">
 
-                <li><a href="dashboardKades.php"> <span>Dashboard</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/index"> <span>Dashboard</span></a></li>
 
-                <li><a href="profilKades.html"> <span>Profil</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/profilKades"> <span>Profil</span></a></li>
 
-                <li><a href="buatLaporanKades.html"> <span>Buat Laporan</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/laporanSaya/<?=$_SESSION['id_user']?>"> <span>Laporan Saya</span></a></li>
 
-                <li><a href="rincianBelanjaKades.html"> <span>Rincian Belanja Desa</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/rincianBelanja/<?=$_SESSION['kelurahan']?>"> <span>Rincian Belanja Desa</span></a></li>
 
-                <li><a href="daftarLaporan.php"><span>Daftar Laporan</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/daftarLaporan"><span>Daftar Laporan</span></a></li>
 
-                <li><a href="tentangDesaKades.html"><span>Tentang Desa</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/tentangDesa"><span>Tentang Desa</span></a></li>
 
-                <li><a href="index.php">
-                    <span>Logout</span>
-                </a>
+
+
+                <li><a href="<?php echo BASEURL; ?>/Home/logout">
+                        <span>Logout</span>
+                    </a>
 
                 </li>
 
@@ -87,7 +89,7 @@
                 </div>
             </nav>
 
-            <div class="col-sm-6"><a href="buatBelanja.html"><button type="submit" class="btn btn-success"> <font color="white">Buat Rincian Belanja</font></button></a></div>
+            <div class="col-sm-6"><a href="<?=BASEURL?>/Kades/buatRincian"><button type="submit" class="btn btn-success"> <font color="white">Buat Rincian Belanja</font></button></a></div>
             <br>
             <hr class="col-lg-12">
         </div>
@@ -108,11 +110,20 @@
 
                                         <tr>
                                             <td class="text-center text-nowrap">Rincian Belanja</td>
-                                            <td class="text-center text-nowrap">Tanggal Pengeluaran</td>
                                             <td class="text-center text-nowrap">Total Pengeluaran</td>
+                                            <td class="text-center text-nowrap">Tanggal Pengeluaran</td>
                                             <td class="text-center text-nowrap">Action</td>
                                         </tr>
+                                        <?php foreach($data['rincian1'] AS $rincian) {?>
+                                        <tr>
+                                            <td class="text-center text-nowrap"><?=$rincian['rincian']?></td>
+                                            <td class="text-center text-nowrap"><?=$rincian['belanja']?></td>
+                                            <td class="text-center text-nowrap"><?=$rincian['tanggalBelanja']?></td>
+                                            <td class="text-center text-nowrap">
+                                                <a href="<?=BASEURL;?>/Kades/ubahBelanja/<?=$rincian['idBelanja']?>"><button type="submit" class="btn btn-success"> <font color="white">Ubah Rincian Belanja</font></button></a>
 
+                                        </tr>
+                                        <?php }?>
 
                                     </table>
                                 </div>
@@ -138,22 +149,16 @@
                                         <td class="text-center text-nowrap">Action</td>
                                     </tr>
 
-                                    <tr>
-                                        <td class="text-center text-nowrap">Perbaikan Irigasi</td>
-                                        <td class="text-center text-nowrap">20000000</td>
-                                        <td class="text-center text-nowrap">2018-10-05 13:20:15</td>
-                                        <td class="text-center text-nowrap">
-                                            <a href="ubahBelanja.html"><button type="submit" class="btn btn-success"> <font color="white">Ubah Rincian Belanja</font></button></a>
+                                    <?php foreach($data['rincian2'] AS $rincian) {?>
+                                        <tr>
+                                            <td class="text-center text-nowrap"><?=$rincian['rincian']?></td>
+                                            <td class="text-center text-nowrap"><?=$rincian['belanja']?></td>
+                                            <td class="text-center text-nowrap"><?=$rincian['tanggalBelanja']?></td>
+                                            <td class="text-center text-nowrap">
+                                                <a href="<?=BASEURL;?>/Kades/ubahBelanja/<?=$rincian['idBelanja']?>"><button type="submit" class="btn btn-success"> <font color="white">Ubah Rincian Belanja</font></button></a>
 
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center text-nowrap">Pembangunan pos jaga</td>
-                                        <td class="text-center text-nowrap">2000000</td>
-                                        <td class="text-center text-nowrap">2018-10-05 17:54:37</td>
-                                        <td class="text-center text-nowrap">
-                                            <a href="ubahBelanja.html"><button type="submit" class="btn btn-success"> <font color="white">Ubah Rincian Belanja</font></button></a>
-
-                                    </tr>
+                                        </tr>
+                                    <?php }?>
 
                                 </table>
                             </div>
@@ -174,6 +179,17 @@
                                         <td class="text-center text-nowrap">Action</td>
                                     </tr>
 
+                                    <?php foreach($data['rincian3'] AS $rincian) {?>
+                                        <tr>
+                                            <td class="text-center text-nowrap"><?=$rincian['rincian']?></td>
+                                            <td class="text-center text-nowrap"><?=$rincian['belanja']?></td>
+                                            <td class="text-center text-nowrap"><?=$rincian['tanggalBelanja']?></td>
+                                            <td class="text-center text-nowrap">
+                                                <a href="<?=BASEURL;?>/Kades/ubahBelanja/<?=$rincian['idBelanja']?>"><button type="submit" class="btn btn-success"> <font color="white">Ubah Rincian Belanja</font></button></a>
+
+                                        </tr>
+                                    <?php }?>
+
 
                                 </table>
                             </div>
@@ -193,6 +209,16 @@
                                         <td class="text-center text-nowrap">Total Pengeluaran</td>
                                         <td class="text-center text-nowrap">Action</td>
                                     </tr>
+                                    <?php foreach($data['rincian4'] AS $rincian) {?>
+                                        <tr>
+                                            <td class="text-center text-nowrap"><?=$rincian['rincian']?></td>
+                                            <td class="text-center text-nowrap"><?=$rincian['belanja']?></td>
+                                            <td class="text-center text-nowrap"><?=$rincian['tanggalBelanja']?></td>
+                                            <td class="text-center text-nowrap">
+                                                <a href="<?=BASEURL;?>/Kades/ubahBelanja/<?=$rincian['idBelanja']?>"><button type="submit" class="btn btn-success"> <font color="white">Ubah Rincian Belanja</font></button></a>
+
+                                        </tr>
+                                    <?php }?>
 
 
                                 </table>
@@ -204,8 +230,8 @@
         </div>
     </div>
 
-    <script src="../../public/plugins/jquery/jquery-3.1.1.min.js"></script>
-    <script src="../../public/js/generateWarna.js"></script>
+    <script src="<?=BASEURL?>/plugins/jquery/jquery-3.1.1.min.js"></script>
+    <script src="<?=BASEURL?>/js/generateWarna.js"></script>
 </body>
 
 </html>

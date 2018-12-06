@@ -39,11 +39,11 @@
 
                 <li><a href="dashboardKades.php"> <span>Dashboard</span></a></li>
 
-                <li><a href="profilKades.html"> <span>Profil</span></a></li>
+                <li><a href="profilKades.php"> <span>Profil</span></a></li>
 
-                <li><a href="buatLaporanKades.html"> <span>Buat Laporan</span></a></li>
+                <li><a href="buatLaporanKades.php"> <span>Buat Laporan</span></a></li>
 
-                <li><a href="rincianBelanjaKades.html"> <span>Rincian Belanja Desa</span></a></li>
+                <li><a href="rincianBelanjaKades.php"> <span>Rincian Belanja Desa</span></a></li>
 
                 <li><a href="daftarLaporan.php"><span>Daftar Laporan</span></a></li>
 
@@ -97,7 +97,7 @@
                 <div class="panel-heading"></div>
 
                 <div class="panel-body">
-                    <form enctype="multipart/form-data" action="rincianBelanjaKades.html" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                    <form enctype="multipart/form-data" action="rincianBelanjaKades.php" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
                         <input type="hidden" name="_token" value="P3wxWWpTAThzu8THmI7vzzeTyuL4crHO02V2jEB3">
 
                         <div class="form-group">

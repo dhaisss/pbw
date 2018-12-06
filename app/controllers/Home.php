@@ -9,8 +9,8 @@ class Home extends Controller{
 
                 $this->view('dashboardAdmin');
             }else if($_SESSION['level'] == '2'){
-
-                $this->view('dashboardKades');
+                $data['laporan']=$this->model('Laporan_model')->getAllLaporan();
+                $this->view('dashboardKades',$data);
             }
             else if($_SESSION['level'] == '3'){
                 $data['laporan']=$this->model('Laporan_model')->getAllLaporanGuest();

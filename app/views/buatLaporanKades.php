@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AKAD</title>
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <link rel="stylesheet" href="../../public/css/sidebarStyle.css">
-    <link rel="stylesheet" href="../../public/css/panelStyle.css">
-    <link href="../../public/css1/bootstrap.min.css" rel="stylesheet">
-    <link href="../../public/css1/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?=BASEURL;?>/css/sidebarStyle.css">
+    <link rel="stylesheet" href="<?=BASEURL;?>/css/panelStyle.css">
+    <link href="<?=BASEURL;?>/css1/bootstrap.min.css" rel="stylesheet">
+    <link href="<?=BASEURL;?>/css1/style.css" rel="stylesheet">
     <style>
         html, body {
             background-color: white;
@@ -32,7 +32,7 @@
             </div>
             <div>
                 <div class="sidebar-avatar-image">
-                    <span><img style="border-radius:20px;" src="../../public/image/yyy_0982345678767821.PNG" width="100px" height="125px" align=center></span>
+                    <span><img style="border-radius:20px;" src="<?=BASEURL;?>/image/yyy_0982345678767821.PNG" width="100px" height="125px" align=center></span>
                 </div>
             </div>
 
@@ -45,11 +45,11 @@
 
                 <li><a href="dashboardKades.php"> <span>Dashboard</span></a></li>
 
-                <li><a href="profilKades.html"> <span>Profil</span></a></li>
+                <li><a href="profilKades.php"> <span>Profil</span></a></li>
 
-                <li><a href="buatLaporanKades.html"> <span>Buat Laporan</span></a></li>
+                <li><a href="buatLaporanKades.php"> <span>Buat Laporan</span></a></li>
 
-                <li><a href="rincianBelanjaKades.html"> <span>Rincian Belanja Desa</span></a></li>
+                <li><a href="rincianBelanjaKades.php"> <span>Rincian Belanja Desa</span></a></li>
 
                 <li><a href="daftarLaporan.php"><span>Daftar Laporan</span></a></li>
 
@@ -79,7 +79,7 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <h3><span class="glyphicon glyphicon-user"></span> Buat Laporan</h3>
+                        <h3><span class="glyphicon glyphicon-th-list"></span> Buat Laporan</h3>
                     </div>
                 </div>
             </nav>
@@ -92,7 +92,7 @@
                 </div>
                 <div class="panel-body">
 
-                    <form enctype="multipart/form-data" action="dashboardKades.php" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                    <form enctype="multipart/form-data" action="<?=BASEURL;?>/Kades/updateLaporan" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
                         <div class="form-group">
                             <label for="name" class="col-md-3 control-label">Laporan</label>
                             <div class="col-md-6">
@@ -104,7 +104,7 @@
                         <div class="form-group">
                             <label for="name" class="col-md-3 control-label">Kecamatan</label>
                             <div class="col-md-6">
-                                <input id="kecamatan" readonly="readonly" type="text" class="form-control" value="Kecamatan Ajung" name="kelurahan">
+                                <input id="kecamatan" readonly="readonly" type="text" class="form-control" value="Kec. <?=$data['kecamatanUser']['kecamatan']?>" name="kelurahan">
 
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                         <div class="form-group">
                             <label for="name" class="col-md-3 control-label">Kelurahan</label>
                             <div class="col-md-6">
-                                <input id="kelurahan" readonly="readonly" type="text" class="form-control" value="Kelurahan Mangaran" name="kelurahan">
+                                <input id="kelurahan" readonly="readonly" type="text" class="form-control" value="<?=$data['kelurahanUser']['kelurahan']?>" name="kelurahan">
 
                             </div>
                         </div>
@@ -131,7 +131,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"></label>
                             <div class="col-sm-6">
-                                <span><img id="foto" src="../../public/laporan/laporan.png" class="img-responsive" width="450px" height="300px" align=center></span>
+                                <span><img id="foto" src="<?=BASEURL;?>/laporan/laporan.png" class="img-responsive" width="450px" height="300px" align=center></span>
                             </div>
                         </div>
 
@@ -164,14 +164,16 @@
 </div>
 </div>
 
-<script type="text/javascript">
+<script src="<?=BASEURL;?>/js/app.js"></script>
+<script>
     $(document).ready(function() {
 
         $('select[name="kecamatan"]').on('change', function(){
             var idKecamatan = $(this).val();
+
             if(idKecamatan) {
                 $.ajax({
-                    url: '/kelurahan/get/'+idKecamatan,
+                    url: '<?=BASEURL;?>/Home/getKelurahan/'+idKecamatan,
                     type:"GET",
                     dataType:"json",
                     beforeSend: function(){
@@ -181,12 +183,11 @@
                     success:function(data) {
 
                         $('select[name="kelurahan"]').empty();
+                        for (var i=0;i<data.length;i++){
+                            console.log(data[i]);
+                            $('select[name="kelurahan"]').append('<option value="'+data[i].idKelurahan+'">' + data[i].kelurahan + '</option>');
+                        }
 
-                        $.each(data, function(key, value){
-
-                            $('select[name="kelurahan"]').append('<option value="'+ key +'">' + value + '</option>');
-
-                        });
                     },
                     complete: function(){
                         $('#loader').css("visibility", "hidden");
