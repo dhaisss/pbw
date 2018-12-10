@@ -347,7 +347,7 @@ class User_model {
     {
         $this->db->query('SELECT * FROM '. $this->table.' u JOIN kelurahan kl ON
         kl.idKelurahan = u.kelurahan JOIN kecamatan kc ON kc.idKecamatan=u.kecamatan Where level = 2 AND u.kelurahan ='.$id);
-        return $this->db->single();
+        return $this->db->resultSet();
     }
 
 

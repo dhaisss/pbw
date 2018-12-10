@@ -98,18 +98,22 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="col-md-3 control-label">Kecamatan</label>
+                            <label for="kecamatan" class="col-md-3 control-label">Kecamatan</label>
                             <div class="col-md-6">
-                                <input id="kecamatan" readonly="readonly" type="text" class="form-control" value="Kec. <?=$data['laporan']['kecamatan']?>" name="kelurahan">
-
+                                <select class="form-control" name="kecamatan">
+                                    <option value="<?=$data['laporan']['idKecamatan']?>"><?=$data['laporan']['kecamatan']?></option>
+                                    <?php foreach ($data['kecamatan'] as $kec):?>
+                                        <option value="<?= $kec['idKecamatan'];?>"><?= $kec['kecamatan'];?></option>
+                                    <?php endforeach;?>
+                                </select>
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <label for="name" class="col-md-3 control-label">Kelurahan</label>
+                            <label for="kelurahan" class="col-md-3 control-label">Kelurahan</label>
                             <div class="col-md-6">
-                                <input id="kelurahan" readonly="readonly" type="text" class="form-control" value="<?=$data['laporan']['kelurahan']?>" name="kelurahan">
-
+                                <select name="kelurahan" class="form-control">
+                                    <option value="<?=$data['laporan']['idKelurahan']?>"><?=$data['laporan']['kelurahan']?></option>
+                                </select>
                             </div>
                         </div>
                       

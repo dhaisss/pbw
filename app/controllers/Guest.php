@@ -33,6 +33,7 @@ class Guest extends Controller
 
 
     public function editLaporanGuest($id){
+        $data['kecamatan'] = $this->model('Kecamatan_model')->getAllKecamatan();
         $data['laporan']=$this->model('Laporan_model')->getLaporanId($id);
         $this->view('editLaporanGuest',$data);
 
@@ -55,8 +56,6 @@ class Guest extends Controller
     }
 
     public function buatLaporan(){
-		    $data['kecamatanUser']=$this->model('Kecamatan_model')->getKecamatanById($_SESSION['kecamatan']);
-        $data['kelurahanUser']=$this->model('Kelurahan_model')->getKelurahanId($_SESSION['kelurahan']);
 		    $data['kecamatan'] = $this->model('Kecamatan_model')->getAllKecamatan();
         $this->view('buatLaporanGuest', $data);
 

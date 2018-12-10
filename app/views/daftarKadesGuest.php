@@ -41,7 +41,7 @@
 
 
             <div class="sidebar-avatar">
-                <div class="sidebar-avatar-text"> Dhais Firmansyah </div>
+                <div class="sidebar-avatar-text"> <?= $_SESSION['nama'];?> </div>
             </div>
 
 
@@ -110,16 +110,18 @@
                                             <td class="text-center text-nowrap">Kecamatan</td>
                                             <td class="text-center text-nowrap">Action</td>
                                         </tr>
-
+                                        <?php foreach($data['kadesGuest'] AS $kades) {?>
                                         <tr>
-                                            <td class="text-center text-nowrap"><?=$data['kadesGuest']['noTelepon']?></td>
-                                            <td class="text-center text-nowrap"><?=$data['kadesGuest']['nama']?></td>
-                                            <td class="text-center text-nowrap"><?=$data['kadesGuest']['kelurahan']?></td>
-                                            <td class="text-center text-nowrap"><?=$data['kadesGuest']['kecamatan']?></td>
+                                            <td class="text-center text-nowrap"><?=$kades['noTelepon']?></td>
+                                            <td class="text-center text-nowrap"><?=$kades['nama']?></td>
+                                            <td class="text-center text-nowrap"><?=$kades['kelurahan']?></td>
+                                            <td class="text-center text-nowrap"><?=$kades['kecamatan']?></td>
                                             <td class="text-center text-nowrap">
-                                                <a href="<?=BASEURL?>/Guest/detailKades/<?=$data['kadesGuest']['idKelurahan']?>"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
+
+                                                <a href="<?=BASEURL?>/Guest/detailKades/<?=$kades['idKelurahan']?>"><button type="submit" class="btn btn-success"> <font color="white">Lihat Detail Desa</font></button></a>
 
                                         </tr>
+                                        <?php }?>
 
                                     </table>
                                 </div>

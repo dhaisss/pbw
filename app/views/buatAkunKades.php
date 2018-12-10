@@ -149,7 +149,7 @@
                             <div class="form-group">
                                 <label for="name" class="col-md-2 control-label">Nomor KTP</label>
                                 <div class="col-md-6">
-                                    <input id="noKTP" type="number" class="form-control" name="noKTP" required autofocus>
+                                    <input id="noKTP" type="number" min="16" max="16" class="form-control" name="noKTP" required autofocus>
                                     <span class="help-block">
                         <strong></strong>
                       </span>
@@ -165,18 +165,6 @@
 
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label for="password-confirm" class="col-md-2 control-label">Confirm Password</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                                </div>
-                            </div>
-
-
-
-
 
                             <div class="form-group">
                                 <div class="col-md-4 col-md-offset-2">

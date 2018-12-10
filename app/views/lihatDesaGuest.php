@@ -37,7 +37,7 @@
 
 
             <div class="sidebar-avatar">
-                <div class="sidebar-avatar-text"> Dhais Firmansyah </div>
+                <div class="sidebar-avatar-text"> <?=$_SESSION['nama']?> </div>
             </div>
 
 

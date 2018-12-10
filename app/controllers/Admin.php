@@ -20,7 +20,7 @@ class Admin extends Controller
         $data['pengguna']=$this->model('User_model')->getPengguna();
         $data['laporan']=$this->model('Laporan_model')->getLaporan();
         $data['post']=$this->model('Laporan_model')->getPost();
-        $this->view('dashboardAdmin',$data);
+        $this->redirect('/Admin/index',$data);
 
     }
 
@@ -70,6 +70,13 @@ class Admin extends Controller
         $data['laporan']=$this->model('Laporan_model')->getAllLaporan();
         $data['kecamatan'] = $this->model('Kecamatan_model')->getAllKecamatan();
         $this->view('daftarLaporanAdmin',$data);
+    }
+
+    public function deleteLaporan2($id,$id2){
+        $data['delete']=$this->model('Laporan_model')->deleteLaporan($id);
+        $data['laporan']=$this->model('Laporan_model')->getAllLaporan();
+        $data['kecamatan'] = $this->model('Kecamatan_model')->getAllKecamatan();
+        $this->redirect('/Admin/lihatAktifitas/'.$id2,$data);
     }
 
     public function deleteLaporanSaya($id){

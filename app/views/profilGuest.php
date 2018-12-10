@@ -52,7 +52,7 @@
 
 
 
-                <li><a href="index.php">
+                <li><a href="<?=BASEURL;?>/Home/logout">
                     <span>Logout</span>
                 </a>
 

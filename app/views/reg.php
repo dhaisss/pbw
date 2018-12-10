@@ -30,15 +30,15 @@
               <h1 style="font-family: 'Poppins', cursive; font-size : 24pt;" >Register to AKAD</h1>
               <div class="form-group">
                 <h3>Nama Lengkap</h3>
-                <input required="required" class="form-control" type="'text'" name="nama" value="">
+                <input required="required" class="form-control" type="text" name="nama" value="">
               </div>
               <div class="form-group">
                 <h3>Alamat Email</h3>
-                <input required="required" class="form-control" type="'email'" name="email" value="">
+                <input required="required" class="form-control" type="email" name="email" >
               </div>
               <div class="form-group">
                 <h3>Alamat</h3>
-                <input required="required" class="form-control" type="'text'" name="alamat" value="">
+                <input required="required" class="form-control" type="text" name="alamat" value="">
               </div>
               <div class="form-group">
                 <h3>Kecamatan</h3>
@@ -58,15 +58,11 @@
               </div>
               <div class="form-group">
                 <h3>Nomor KTP</h3>
-                <input required="required"  class="form-control" type="'number'" name="noktp" value="">
+                <input required="required"  class="form-control" type="number" min="16" max="16" name="noktp" value="">
               </div>
               <div class="form-group">
                 <h3>Password</h3>
-                <input required="required" class="form-control" type="password" name="password" value="">
-              </div>
-              <div class="form-group">
-                <h3>Confirm Password</h3>
-                <input required="required" class="form-control" type="password" name="confirmpassword" value="">
+                <input required="required" class="form-control" minlength="6" maxlength="25" type="password" name="password" id="password" value="">
               </div>
               <div style="" class="form-group">
                 <button class="btn btn-primary " type="submit" name="register">Register</button>
@@ -87,6 +83,7 @@
       </div>
     </footer>
     <script src="<?=BASEURL;?>/js/app.js"></script>
+
     <script>
         $(document).ready(function() {
 

@@ -103,14 +103,14 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Luas Daerah</label>
                                 <div class="col-sm-6">
-                                    <input type="text"  name="luas" value="<?=$data['kelurahan']['luas']?>" class="form-control">
+                                    <input type="number" min="1" name="luas" value="<?=$data['kelurahan']['luas']?>" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Jumlah Penduduk</label>
                                 <div class="col-sm-6">
-                                    <input type="text"  name="penduduk" value="<?=$data['kelurahan']['penduduk']?>" class="form-control">
+                                    <input type="number" min="100" name="penduduk" value="<?=$data['kelurahan']['penduduk']?>" class="form-control">
                                 </div>
                             </div>
 

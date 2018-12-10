@@ -299,11 +299,13 @@ class Laporan_model {
                 {
 
                   if ($_FILES['foto']['name'] == null) {
-                      $query = "UPDATE `laporan` SET `laporan`= :laporan,`status`=:status, `updated_at`= curdate() WHERE idLaporan = :id";
+                      $query = "UPDATE `laporan` SET `laporan`= :laporan,`status`=:status, kecamatan=:kecamatan, kelurahan=:kelurahan, `updated_at`= curdate() WHERE idLaporan = :id";
                       $this->db->query($query);
 
 
                       $this->db->bind('laporan', $data['laporan']);
+                      $this->db->bind('kecamatan', $data['kecamatan']);
+                      $this->db->bind('kelurahan', $data['kelurahan']);
                       $this->db->bind('status', 2);
                       $this->db->bind(':id', $id);
                       $this->db->execute();
@@ -340,7 +342,7 @@ class Laporan_model {
                           }
 
                           move_uploaded_file($asal, $namaFile);
-                          $query = "UPDATE `laporan` SET `laporan`='".$data['laporan']."',`fotoLaporan`='".$nama."',`status`=2,`updated_at`=curdate() WHERE idLaporan= ".$id." ";
+                          $query = "UPDATE `laporan` SET `laporan`='".$data['laporan']."',`fotoLaporan`='".$nama."',`status`=2, kecamatan=".$data['kecamatan'].", kelurahan=".kelurahan['kelurahan'].",`updated_at`=curdate() WHERE idLaporan= ".$id." ";
 
                           $this->db->query($query);
 
@@ -400,7 +402,7 @@ class Laporan_model {
                 }
 
                 move_uploaded_file($asal, $namaFile);
-                $query = "UPDATE `laporan` SET `laporan`='".$data['laporan']."',`fotoLaporan`='".$nama."',`status`=".$data['status'].",  kecamatan= ".$data['kecamatan'].", kelurahan=".$data['kelurahan']." ,`updated_at`=curdate() WHERE idLaporan= ".$id." ";
+                $query = "UPDATE `laporan` SET `laporan`='".$data['laporan']."',`fotoLaporan`='".$nama."',`status`=".$data['status'].",  kecamatan= ".$data['kecamatan'].", kelurahan=".$data['kelurahan']." ,`updated_at`=curdate() WHERE idLaporan= ".$id;
 
                 $this->db->query($query);
 

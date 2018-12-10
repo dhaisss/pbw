@@ -123,7 +123,7 @@
                                         </div>
                                         <hr class="col-md-8">
                                         <div>
-                                            <a href="<?=BASEURL;?>/Admin/deleteLaporan/<?=$laporan['idLaporan']?>"><button type="submit" class="btn btn-danger"> <font color="white">Hapus Laporan</font></button></a>
+                                            <a href="<?=BASEURL;?>/Admin/deleteLaporan2/<?=$laporan['idLaporan']?>/<?=$laporan['users']?>"><button type="submit" class="btn btn-danger"> <font color="white">Hapus Laporan</font></button></a>
                                         </div>
                                     </article>
                                 </div>
