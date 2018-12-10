@@ -112,10 +112,6 @@
 
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Status Laporan</label>
-
                       
                         <div class="form-group">
                             <label class="col-sm-3 control-label"></label>

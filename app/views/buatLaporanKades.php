@@ -92,7 +92,7 @@
                 </div>
                 <div class="panel-body">
 
-                    <form enctype="multipart/form-data" action="<?=BASEURL;?>/Kades/updateLaporan" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                    <form enctype="multipart/form-data" action="<?=BASEURL;?>/Kades/buatLaporanKades" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
                         <div class="form-group">
                             <label for="name" class="col-md-3 control-label">Laporan</label>
                             <div class="col-md-6">

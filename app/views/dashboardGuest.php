@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="media-body">
                                         <h4 class="media-heading"> <?=$laporan['nama']?> </h4>
-                                        <span><i>Posted on <?=$laporan['updated_at']?></i></span>
+                                        <span><i>Posted on <?=$laporan['updated_at']?></i></span><span><i>, Sebagai <?=$laporan['Level']?></i></span>
                                         <br>
                                         <span><i>Kelurahan <?=$laporan['kelurahan']?>, Kecamatan <?=$laporan['kecamatan']?></i></span>
                                     </div>

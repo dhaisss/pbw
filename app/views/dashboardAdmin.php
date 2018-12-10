@@ -10,7 +10,7 @@
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
-
+  <?php Flasher::flash(); ?>
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -24,13 +24,13 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="dashboardAdmin.php">Dashboard</a></li>
-            <li><a href="daftarLaporanAdmin.php">Laporan</a></li>
-            <li><a href="buatLaporanAdmin.php">Posts</a></li>
-            <li><a href="daftarKadesAdmin.php">Users</a></li>
+            <li class="active"><a href="<?php echo BASEURL;?>/Admin/index">Dashboard</a></li>
+            <li><a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin">Laporan</a></li>
+            <li><a href="<?php echo BASEURL;?>/Admin/laporanSaya/<?=$_SESSION['id_user']?>">Posts</a></li>
+            <li><a href="<?php echo BASEURL;?>/Admin/daftarKades">Kepala Desa</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Welcome, Brad</a></li>
+            <li><a href="#">Welcome, Admin</a></li>
             <li><a href="<?php echo BASEURL; ?>/Home/logout">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -73,12 +73,12 @@
         <div class="row">
           <div class="col-md-3">
             <div class="list-group">
-              <a href="#" class="list-group-item active main-color-bg">
+              <a href="<?php echo BASEURL;?>/Admin/index" class="list-group-item active main-color-bg">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
-              <a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge">12</span></a>
-              <a href="<?php echo BASEURL;?>/Admin/buatLaporanAdmin" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Buat Laporan <span class="badge"></span></a>
-              <a href="<?php echo BASEURL;?>/Admin/daftarKades" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge">203</span></a>
+              <a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge"></span></a>
+              <a href="<?php echo BASEURL;?>/Admin/laporanSaya/<?=$_SESSION['id_user']?>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Laporan Saya <span class="badge"></span></a>
+              <a href="<?php echo BASEURL;?>/Admin/daftarKades" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge"></span></a>
             </div>
 
 
@@ -92,19 +92,19 @@
               <div class="panel-body">
                 <div class="col-md-4">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 203</h2>
+                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?=$data['pengguna']['total']?></h2>
                     <h4>Pengguna</h4>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 12</h2>
+                    <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> <?=$data['laporan']['total']?></h2>
                     <h4>Laporan</h4>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 33</h2>
+                    <h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <?=$data['post']['total']?></h2>
                     <h4>Posts</h4>
                   </div>
                 </div>
@@ -115,46 +115,26 @@
               <!-- Latest Users -->
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h3 class="panel-title">Latest Users</h3>
+                  <h3 class="panel-title">Manajemen User</h3>
                 </div>
                 <div class="panel-body">
                   <table class="table table-striped table-hover">
                       <tr>
                         <th>Nama</th>
                         <th>Email</th>
-                        <th>Joined</th>
                         <th>Sebagai</th>
+                        <th>Aktifitas</th>
                       </tr>
+                      <?php foreach($data['user'] AS $user) {?>
                       <tr>
-                        <td>Jill Smith</td>
-                        <td>jillsmith@gmail.com</td>
-                        <td>Dec 12, 2016</td>
-                        <td>Kepala Desa Mangaran</td>
+                        <td><?=$user['nama']?></td>
+                        <td><?=$user['email']?></td>
+                        <td><?=$user['Level']?></td>
+                        <td> <a href="<?php echo BASEURL;?>/Admin/lihatAktifitas/<?=$user['id']?>"><button type="submit" class="btn btn-success"> <font color="white">Lihat Aktifitas</font></button></a>
+                            <a href="<?php echo BASEURL;?>/Admin/hapusUser/<?=$user['id']?>"><button type="submit" class="btn btn-danger"> <font color="white">Hapus User</font></button></a>
+                        </td>
                       </tr>
-                      <tr>
-                        <td>Eve Jackson</td>
-                        <td>ejackson@yahoo.com</td>
-                        <td>Dec 13, 2016</td>
-                        <td>Guest Desa Ajung</td>
-                      </tr>
-                      <tr>
-                        <td>John Doe</td>
-                        <td>jdoe@gmail.com</td>
-                        <td>Dec 13, 2016</td>
-                        <td>Kepala Desa Ajung</td>
-                      </tr>
-                      <tr>
-                        <td>Stephanie Landon</td>
-                        <td>landon@yahoo.com</td>
-                        <td>Dec 14, 2016</td>
-                        <td>Guest Desa Pancakarya</td>
-                      </tr>
-                      <tr>
-                        <td>Mike Johnson</td>
-                        <td>mjohnson@gmail.com</td>
-                        <td>Dec 15, 2016</td>
-                        <td>Kepala Desa Pancakarya</td>
-                      </tr>
+                      <?php }?>
                     </table>
                 </div>
               </div>

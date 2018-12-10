@@ -10,7 +10,7 @@
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
   </head>
   <body>
-
+  <?php Flasher::flash(); ?>
   <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
@@ -22,18 +22,18 @@
         </button>
         <a class="navbar-brand" href="#">Admin Control AKAD</a>
       </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li ><a href="dashboardAdmin.php">Dashboard</a></li>
-          <li class="active"><a href="daftarLaporanAdmin.php">Laporan</a></li>
-          <li><a href="buatLaporanAdmin.php">Posts</a></li>
-          <li><a href="daftarKadesAdmin.php">Users</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Welcome, Brad</a></li>
-          <li><a href="index.php">Logout</a></li>
-        </ul>
-      </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="<?php echo BASEURL;?>/Admin/index">Dashboard</a></li>
+                <li class="active"><a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin">Laporan</a></li>
+                <li><a href="<?php echo BASEURL;?>/Admin/buatLaporanAdmin">Posts</a></li>
+                <li><a href="<?php echo BASEURL;?>/Admin/daftarKades">Kepala Desa</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Welcome, Admin</a></li>
+                <li><a href="<?php echo BASEURL; ?>/Home/logout">Logout</a></li>
+            </ul>
+        </div>
     </div>
   </nav>
 
@@ -63,7 +63,7 @@
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="dashboardAdmin.php">Dashboard</a></li>
+          <li><a href="<?php echo BASEURL;?>/Admin/index">Dashboard</a></li>
           <li class="active">Daftar Laporan</li>
         </ol>
       </div>
@@ -73,14 +73,14 @@
       <div class="container">
         <div class="row">
           <div class="col-md-3">
-            <div class="list-group">
-              <a href="dashboardAdmin.php" class="list-group-item">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
-              </a>
-              <a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge"></span></a>
-              <a href="<?php echo BASEURL;?>/Admin/buatLaporanAdmin" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Buat Laporan <span class="badge"></span></a>
-              <a href="<?php echo BASEURL;?>/Admin/daftarKades" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge">203</span></a>
-            </div>
+              <div class="list-group">
+                  <a href="<?php echo BASEURL;?>/Admin/index" class="list-group-item">
+                      <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
+                  </a>
+                  <a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge"></span></a>
+                  <a href="<?php echo BASEURL;?>/Admin/laporanSaya/<?=$_SESSION['id_user']?>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Laporan Saya <span class="badge"></span></a>
+                  <a href="<?php echo BASEURL;?>/Admin/daftarKades" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge"></span></a>
+              </div>
 
           </div>
           <div class="col-md-9">
@@ -108,7 +108,7 @@
                           </div>
                           <div class="media-body">
                             <h4 class="media-heading"> <?=$laporan['nama']?> </h4>
-                            <span><small><i>Posted on <?=$laporan['updated_at']?></i></small></span>
+                            <span><small><i>Posted on <?=$laporan['updated_at']?></i></small></span><span><small><i>, Sebagai <?=$laporan['Level']?></i></small></span>
                             <br>
                             <span><small><i>Kelurahan <?=$laporan['kelurahan']?>, Kecamatan <?=$laporan['kecamatan']?></i></small></span>
                           </div>
@@ -122,6 +122,9 @@
                         <p class="lead"><?=$laporan['laporan']?></p>
                       </div>
                       <hr class="col-md-8">
+                        <div>
+                            <a href="<?=BASEURL;?>/Admin/deleteLaporan/<?=$laporan['idLaporan']?>"><button type="submit" class="btn btn-danger"> <font color="white">Hapus Laporan</font></button></a>
+                        </div>
                     </article>
                   </div>
                 </div>

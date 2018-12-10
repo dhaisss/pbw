@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Area | Dashboard</title>
+    <title>Admin Area | Pages</title>
     <!-- Bootstrap core CSS -->
-    <link href="../../public/css1/bootstrap.min.css" rel="stylesheet">
-    <link href="../../public/css1/style.css" rel="stylesheet">
+    <link href="<?php echo BASEURL;?>/css1/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo BASEURL;?>/css1/style.css" rel="stylesheet">
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
 </head>
 <body>
-<?php Flasher::flash(); ?>
+
 <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
@@ -27,14 +26,14 @@
             <ul class="nav navbar-nav">
                 <li><a href="<?php echo BASEURL;?>/Admin/index">Dashboard</a></li>
                 <li><a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin">Laporan</a></li>
-                <li><a href="<?php echo BASEURL;?>/Admin/laporanSaya/<?=$_SESSION['id_user']?>">Posts</a></li>
+                <li class="active"><a href="<?php echo BASEURL;?>/Admin/laporanSaya/<?=$_SESSION['id_user']?>">Posts</a></li>
                 <li><a href="<?php echo BASEURL;?>/Admin/daftarKades">Kepala Desa</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Welcome, Admin</a></li>
                 <li><a href="<?php echo BASEURL; ?>/Home/logout">Logout</a></li>
             </ul>
-        </div><!--/.nav-collapse -->
+        </div>
     </div>
 </nav>
 
@@ -64,7 +63,8 @@
 <section id="breadcrumb">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="active">Dashboard</li>
+            <li><a href="dashboardAdmin.php">Dashboard</a></li>
+            <li class="active">Daftar Laporan</li>
         </ol>
     </div>
 </section>
@@ -74,118 +74,67 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="<?php echo BASEURL;?>/Admin/index" class="list-group-item">
+                    <a href="<?php echo BASEURL;?>/Admin/index" class="list-group-item ">
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
                     </a>
                     <a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge"></span></a>
-                    <a href="<?php echo BASEURL;?>/Admin/laporanSaya/<?=$_SESSION['id_user']?>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Laporan Saya <span class="badge"></span></a>
+                    <a href="<?php echo BASEURL;?>/Admin/laporanSaya/<?=$_SESSION['id_user']?>" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Laporan Saya <span class="badge"></span></a>
                     <a href="<?php echo BASEURL;?>/Admin/daftarKades" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge"></span></a>
                 </div>
 
-
-
             </div>
             <div class="col-md-9">
-                <!-- Website Overview -->
                 <div class="panel panel-default">
                     <div class="panel-heading main-color-bg">
-                        <h3 class="panel-title">Buat Akun Kepala Desa</h3>
+                        <h3 class="panel-title">Laporan Yang Telah dibuat</h3>
                     </div>
                     <div class="panel-body">
-                        <form enctype="multipart/form-data" action="<?=BASEURL; ?>/Admin/insert" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
-                            <div class="form-group">
-                                <label for="name" class="col-md-2 control-label">Nama Lengkap</label>
-                                <div class="col-md-6">
-                                    <input id="nama" type="text" class="form-control" name="nama" required autofocus>
-                                    <span class="help-block">
-                        <strong></strong>
-                      </span>
+                        <a href="<?=BASEURL;?>/Admin/buatLaporanAdmin"><button class="btn btn-primary" style="margin-left: 15px;">Buat Laporan</button></a>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" placeholder="Filter ...">
+                            </div>
+                        </div>
+                        <br>
 
+                        <?php foreach($data['laporan'] AS $laporan) {?>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <article>
+                                        <div style="margin-left: 10px;" class="row">
+                                            <!-- Left-aligned -->
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <img src="<?php echo BASEURL;?>/image/<?=$laporan['foto']?>" alt="Demo Avatar John Doe" class="media-object" style="width:60px;">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"> <?=$laporan['nama']?> </h4>
+                                                    <span><small><i>Posted on <?=$laporan['updated_at']?></i></small></span>
+                                                    <br>
+                                                    <span><small><i>Kelurahan <?=$laporan['kelurahan']?>, Kecamatan <?=$laporan['kecamatan']?></i></small></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="col-md-12">
+                                        <img src="<?php echo BASEURL;?>/laporan/<?=$laporan['fotoLaporan']?>" class="img-responsive">
+
+                                        <br />
+                                        <div class="col-md-10" style="text-align: justify-all;">
+                                            <p class="lead"><?=$laporan['laporan']?></p>
+                                        </div>
+                                        <hr class="col-md-8">
+
+                                        <div><a href="<?=BASEURL;?>/Admin/editLaporan/<?=$laporan['idLaporan']?>"><button type="submit" class="btn btn-success"> <font color="white">Edit Laporan  </font></button></a>
+                                            <br>
+                                            <a href="<?=BASEURL;?>/Admin/deleteLaporanSaya/<?=$laporan['idLaporan']?>"><button type="submit" class="btn btn-danger"> <font color="white">Hapus Laporan</font></button></a>
+                                        </div>
+                                    </article>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="name" class="col-md-2 control-label">Alamat Email</label>
-                                <div class="col-md-6">
-                                    <input id="email" type="text" class="form-control" name="email" required autofocus>
-                                    <span class="help-block">
-                        <strong></strong>
-                      </span>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="name" class="col-md-2 control-label">Alamat</label>
-                                <div class="col-md-6">
-                                    <input id="alamat" type="text" class="form-control" name="alamat" required autofocus>
-                                    <span class="help-block">
-                        <strong></strong>
-                      </span>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="kecamatan" class="col-md-2 control-label">Kecamatan</label>
-                                <div class="col-md-4">
-                                    <select class="form-control" name="kecamatan">
-                                        <option value="">Pilih Kecamatan : </option>
-                                        <?php foreach ($data['kecamatan'] as $kec):?>
-                                            <option value="<?= $kec['idKecamatan'];?>"><?= $kec['kecamatan'];?></option>
-                                        <?php endforeach;?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="kelurahan" class="col-md-2 control-label">Kelurahan</label>
-                                <div class="col-md-4">
-                                    <select name="kelurahan" class="form-control">
-                                        <option>Pilih Kelurahan</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="name" class="col-md-2 control-label">Nomor KTP</label>
-                                <div class="col-md-6">
-                                    <input id="noKTP" type="number" class="form-control" name="noKTP" required autofocus>
-                                    <span class="help-block">
-                        <strong></strong>
-                      </span>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="password" class="col-md-2 control-label">Password</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="password-confirm" class="col-md-2 control-label">Confirm Password</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                                </div>
-                            </div>
-
-
-
-
-
-                            <div class="form-group">
-                                <div class="col-md-4 col-md-offset-2">
-                                    <button type="submit" class="btn btn-primary">
-                                        Buat Akun
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                        <?php }?>
 
 
                     </div>
@@ -194,6 +143,9 @@
 
             </div>
         </div>
+
+    </div>
+    </div>
     </div>
 </section>
 
@@ -208,10 +160,14 @@
     </div>
 </footer>
 
+<!-- Modals -->
+
+<!-- Add Page -->
+
 <div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form>
+            <form enctype="multipart/form-data" action="<?=BASEURL;?>/Admin/buatLaporan" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Buat Laporan</h4>
@@ -226,8 +182,8 @@
 
                     <div class="form-group">
                         <label>Kecamatan</label>
-                        <select class="form-control" name="kecamatan">
-                            <option value="">Pilih Kecamatan : </option>
+                        <select name="kecamatan" class="form-control">
+                            <option value="">Pilih Kecamatan</option>
                             <?php foreach ($data['kecamatan'] as $kec):?>
                                 <option value="<?= $kec['idKecamatan'];?>"><?= $kec['kecamatan'];?></option>
                             <?php endforeach;?>
@@ -251,7 +207,7 @@
 
                     <div class="form-group">
                         <label></label>
-                        <span><img id="foto" src="../../public/laporan/laporan.png" class="img-responsive" width="450px" height="300px" align=center></span>
+                        <span><img id="foto" src="<?php echo BASEURL;?>/laporan/laporan.png" class="img-responsive" width="450px" height="300px" align=center></span>
                     </div>
 
                     <div class="form-group">
@@ -270,11 +226,8 @@
 
 
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-
-<script src="<?=BASEURL;?>/js/app.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="<?php echo BASEURL;?>/js1/bootstrap.min.js"></script>
 <script>
     $(document).ready(function() {
 
@@ -310,6 +263,26 @@
         });
 
     });
+</script>
+<script>
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#foto').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#inpfoto").change(function () {
+
+        readURL(this);
+    });
+
 </script>
 </body>
 </html>

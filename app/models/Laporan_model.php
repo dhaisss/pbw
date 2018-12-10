@@ -17,11 +17,23 @@ class Laporan_model {
         return $this->db->resultSet();
     }
 
+    public function getLaporan()
+    {
+        $this->db->query('SELECT COUNT(*) AS total FROM '. $this->table.' l JOIN users u ON u.id=l.users WHERE level = 2 or level = 3 ');
+        return $this->db->single();
+    }
+
+    public function getPost()
+    {
+        $this->db->query('SELECT COUNT(*) AS total FROM laporan l JOIN users u ON u.id=l.users WHERE level = 1');
+        return $this->db->single();
+    }
+
     public function getAllLaporanGuest()
     {
         $this->db->query('SELECT * FROM '. $this->table.'
         l JOIN users u ON u.id = l.users JOIN kelurahan kh ON kh.idKelurahan = l.kelurahan
-        JOIN kecamatan kc ON kc.idKecamatan = l.kecamatan WHERE status=2 order by l.updated_at desc');
+        JOIN kecamatan kc ON kc.idKecamatan = l.kecamatan JOIN level lv ON lv.idLevel = u.level WHERE status=2 order by l.updated_at desc');
         return $this->db->resultSet();
     }
 
@@ -33,9 +45,17 @@ class Laporan_model {
         return $this->db->rowCount();
     }
 
+    public function deleteAllLaporan($id)
+    {
+        $this->db->query('DELETE FROM `laporan` WHERE users = :id');
+        $this->db->bind(':id', $id);
+        $this->db->execute();
+        return $this->db->rowCount();
+    }
+
     public function getLaporanById($id)
     {
-        $this->db->query('SELECT * FROM laporan l JOIN users u ON u.id = l.users JOIN kelurahan kh ON kh.idKelurahan = l.kelurahan JOIN kecamatan kc ON kc.idKecamatan = l.kecamatan WHERE u.id = :id order by l.updated_at desc');
+        $this->db->query('SELECT * FROM laporan l JOIN users u ON u.id = l.users JOIN kelurahan kh ON kh.idKelurahan = l.kelurahan JOIN kecamatan kc ON kc.idKecamatan = l.kecamatan JOIN level lv ON lv.idLevel=u.level WHERE u.id = :id order by l.updated_at desc');
 
         $this->db->bind(':id', $id);
 
@@ -94,6 +114,61 @@ class Laporan_model {
             $this->db->bind('laporan', $data['laporan']);
             $this->db->bind('fotoLaporan', $nama);
             $this->db->bind('status', $data['status']);
+            $this->db->bind('users', $_SESSION['id_user']);
+            $this->db->bind('kecamatan', $data['kecamatan']);
+            $this->db->bind('kelurahan', $data['kelurahan']);
+
+
+            $this->db->execute();
+
+
+            return $this->db->rowCount();
+
+        }
+    }
+
+    public function insertLaporanGuest($data)
+    {
+
+        $nama = $_FILES['foto']['name'];
+        $asal = $_FILES['foto']['tmp_name'];
+        $namaFile = 'laporan/' . basename($nama);
+        $time = time();
+
+        $ex = strtolower(pathinfo($nama, PATHINFO_EXTENSION));
+        if ($ex != "jpg" && $ex != "png" && $ex != "jpeg") {
+            return 0;
+        } else {
+            if (file_exists($namaFile)) {
+                if ($ex == "jpg") {
+                    $namaFile = str_replace(".jpg", "", $namaFile);
+                    $namaFile = $namaFile . "_" . $time . ".jpg";
+                    $nama = str_replace(".jpg", "", $nama);
+                    $nama = $nama . "_" . $time . ".jpg";
+                } else if ($ex == "png") {
+                    $namaFile = str_replace(".png", "", $namaFile);
+                    $namaFile = $namaFile . "_" . $time . ".png";
+                    $nama = str_replace(".png", "", $nama);
+                    $nama = $nama . "_" . $time . ".png";
+                } else if ($ex == "jpeg") {
+                    $namaFile = str_replace(".jpeg", "", $namaFile);
+                    $namaFile = $namaFile . "_" . $time . ".jpeg";
+                    $nama = str_replace(".jpeg", "", $nama);
+                    $nama = $nama . "_" . $time . ".jpeg";
+                }
+            }
+
+            move_uploaded_file($asal, $namaFile);
+            $query = "INSERT INTO " . $this->table . "
+                  (`idLaporan`, `laporan`, `fotoLaporan`, `status`, `users`, `kecamatan`, `kelurahan`, `created_at`,
+                  `updated_at`) VALUES ('', :laporan , :fotoLaporan , :status , :users , :kecamatan , :kelurahan , curdate() , curdate() )";
+
+
+            $this->db->query($query);
+
+            $this->db->bind('laporan', $data['laporan']);
+            $this->db->bind('fotoLaporan', $nama);
+            $this->db->bind('status', 2);
             $this->db->bind('users', $_SESSION['id_user']);
             $this->db->bind('kecamatan', $data['kecamatan']);
             $this->db->bind('kelurahan', $data['kelurahan']);
@@ -218,11 +293,10 @@ class Laporan_model {
 
                 }
             }
+    }
 
-}
-
-public function updateLaporanGuest($data,$id)
-          {
+            public function updateLaporanGuest($data,$id)
+                {
 
                   if ($_FILES['foto']['name'] == null) {
                       $query = "UPDATE `laporan` SET `laporan`= :laporan,`status`=:status, `updated_at`= curdate() WHERE idLaporan = :id";
@@ -279,4 +353,64 @@ public function updateLaporanGuest($data,$id)
                   }
 
 }
+    public function updateLaporanAdmin($data,$id)
+    {
+
+        if ($_FILES['foto']['name'] == null) {
+            $query = "UPDATE `laporan` SET `laporan`= :laporan,`status`=:status, kecamatan=:kecamatan, kelurahan=:kelurahan, `updated_at`= curdate() WHERE idLaporan = :id";
+            $this->db->query($query);
+
+
+            $this->db->bind('laporan', $data['laporan']);
+            $this->db->bind('status', $data['status']);
+            $this->db->bind('kecamatan', $data['kecamatan']);
+            $this->db->bind('kelurahan', $data['kelurahan']);
+            $this->db->bind(':id', $id);
+            $this->db->execute();
+            return $this->db->rowCount();
+
+        } else if ($_FILES['foto']['name'] != null){
+
+            $nama = $_FILES['foto']['name'];
+            $asal = $_FILES['foto']['tmp_name'];
+            $namaFile = 'laporan/' . basename($nama);
+            $time = time();
+
+            $ex = strtolower(pathinfo($nama, PATHINFO_EXTENSION));
+            if ($ex != "jpg" && $ex != "png" && $ex != "jpeg") {
+                return 0;
+            } else {
+                if (file_exists($namaFile)) {
+                    if ($ex == "jpg") {
+                        $namaFile = str_replace(".jpg", "", $namaFile);
+                        $namaFile = $namaFile . "_" . $time . ".jpg";
+                        $nama = str_replace(".jpg", "", $nama);
+                        $nama = $nama . "_" . $time . ".jpg";
+                    } else if ($ex == "png") {
+                        $namaFile = str_replace(".png", "", $namaFile);
+                        $namaFile = $namaFile . "_" . $time . ".png";
+                        $nama = str_replace(".png", "", $nama);
+                        $nama = $nama . "_" . $time . ".png";
+                    } else if ($ex == "jpeg") {
+                        $namaFile = str_replace(".jpeg", "", $namaFile);
+                        $namaFile = $namaFile . "_" . $time . ".jpeg";
+                        $nama = str_replace(".jpeg", "", $nama);
+                        $nama = $nama . "_" . $time . ".jpeg";
+                    }
+                }
+
+                move_uploaded_file($asal, $namaFile);
+                $query = "UPDATE `laporan` SET `laporan`='".$data['laporan']."',`fotoLaporan`='".$nama."',`status`=".$data['status'].",  kecamatan= ".$data['kecamatan'].", kelurahan=".$data['kelurahan']." ,`updated_at`=curdate() WHERE idLaporan= ".$id." ";
+
+                $this->db->query($query);
+
+
+                $this->db->execute();
+
+                return $this->db->rowCount();
+
+            }
+        }
+
+    }
 }

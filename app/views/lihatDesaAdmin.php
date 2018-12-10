@@ -28,10 +28,10 @@
                 <li><a href="<?php echo BASEURL;?>/Admin/index">Dashboard</a></li>
                 <li><a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin">Laporan</a></li>
                 <li><a href="<?php echo BASEURL;?>/Admin/buatLaporanAdmin">Posts</a></li>
-                <li class="active"><a href="<?php echo BASEURL;?>/Admin/daftarKades">Users</a></li>
+                <li class="active"><a href="<?php echo BASEURL;?>/Admin/daftarKades">Kepala Desa</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Welcome, Brad</a></li>
+                <li><a href="#">Welcome, Admin</a></li>
                 <li><a href="<?php echo BASEURL; ?>/Home/logout">Logout</a></li>
             </ul>
         </div><!--/.nav-collapse -->
@@ -76,11 +76,11 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="dashboardAdmin.php" class="list-group-item">
+                    <a href="<?php echo BASEURL;?>/Admin/index" class="list-group-item ">
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
                     </a>
-                    <a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge"></span></a>
-                    <a href="<?php echo BASEURL;?>/Admin/buatLaporanAdmin" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Buat Laporan <span class="badge"></span></a>
+                    <a href="<?php echo BASEURL;?>/Admin/daftarLaporanAdmin" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Daftar Laporan <span class="badge">12</span></a>
+                    <a href="<?php echo BASEURL;?>/Admin/laporanSaya/<?=$_SESSION['id_user']?>" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Laporan Saya <span class="badge"></span></a>
                     <a href="<?php echo BASEURL;?>/Admin/daftarKades" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Daftar Kepala Desa <span class="badge">203</span></a>
                 </div>
 

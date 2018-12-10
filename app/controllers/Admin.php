@@ -5,13 +5,79 @@ class Admin extends Controller
 
 
     public function index(){
-        $this->view('dashboardAdmin');
+        $data['user']=$this->model('User_model')->getAllusers();
+        $data['pengguna']=$this->model('User_model')->getPengguna();
+        $data['laporan']=$this->model('Laporan_model')->getLaporan();
+        $data['post']=$this->model('Laporan_model')->getPost();
+        $this->view('dashboardAdmin',$data);
+
+    }
+
+    public function hapusUser($id){
+        $data['user']=$this->model('User_model')->getAllusers();
+        $data['deleteUser']=$this->model('User_model')->deleteUser($id);
+        $data['deleteLaporan']=$this->model('Laporan_model')->deleteAllLaporan($id);
+        $data['pengguna']=$this->model('User_model')->getPengguna();
+        $data['laporan']=$this->model('Laporan_model')->getLaporan();
+        $data['post']=$this->model('Laporan_model')->getPost();
+        $this->view('dashboardAdmin',$data);
 
     }
 
     public function daftarKades(){
         $data=$this->model('User_model')->getKades();
         $this->view('daftarKadesAdmin',$data);
+
+    }
+
+    public function laporanSaya($id){
+        $data['laporan']=$this->model('Laporan_model')->getLaporanById($id);
+        $this->view('laporanSayaAdmin',$data);
+
+    }
+
+    public function lihatAktifitas($id){
+        $data['laporan']=$this->model('Laporan_model')->getLaporanById($id);
+        $this->view('lihatAktifitas',$data);
+
+    }
+
+    public function editLaporan($id){
+        $data['laporan']=$this->model('Laporan_model')->getLaporanId($id);
+        $data['kecamatan'] = $this->model('Kecamatan_model')->getAllKecamatan();
+        $this->view('editLaporanAdmin',$data);
+
+    }
+
+    public function updateLaporan($id){
+        $hasilRegis = $this->model('Laporan_model')->updateLaporanAdmin($_POST,$id);
+
+        if ($hasilRegis > 0) {
+            Flasher::setFlash('Perubahan', 'Berhasil', 'dilakukan', 'success');
+            $id = $_SESSION['id_user'];
+
+            $this->redirect('/Admin/LaporanSaya/'.$id);
+        }
+        else{
+            Flasher::setFlash('Perubahan', 'Gagal', 'diubah, Terjadi Kesalahan Jaringan', 'danger');
+            $this->redirect('/Admin/index');
+        }
+
+    }
+
+    public function deleteLaporan($id){
+        $data['delete']=$this->model('Laporan_model')->deleteLaporan($id);
+        $data['laporan']=$this->model('Laporan_model')->getAllLaporan();
+        $data['kecamatan'] = $this->model('Kecamatan_model')->getAllKecamatan();
+        $this->view('daftarLaporanAdmin',$data);
+    }
+
+    public function deleteLaporanSaya($id){
+        $data['delete']=$this->model('Laporan_model')->deleteLaporan($id);
+        $data['laporan']=$this->model('Laporan_model')->getLaporanById($id);
+        // $this->view('laporanSayaGuest',$data);
+        $this->redirect('/Admin/laporanSaya/'. $_SESSION['id_user']);
+
 
     }
 
@@ -47,8 +113,9 @@ class Admin extends Controller
 
     public function insert()
     {
+        $kelurahan = $this->model('User_model')->getUserKelurahan($_POST);
+    if ($kelurahan['total']==0){
         $hasilRegis = $this->model('User_model')->registerKades($_POST);
-
         if ($hasilRegis > 0) {
             Flasher::setFlash('Pendaftaran', 'Berhasil', 'ditambahkan', 'success');
             $this->redirect('/Admin/daftarKades');
@@ -57,6 +124,11 @@ class Admin extends Controller
             $this->redirect('/Admin/buatAkunKades');
 
         }
+    }
+    else{
+        Flasher::setFlash('Pendaftaran', 'Gagal', 'ditambahkan, Kelurahan Yang Dimaksud Telah memiliki kepala desa', 'danger');
+        $this->redirect('/Admin/buatAkunKades');
+    }
     }
 
     public function buatLaporan()

@@ -30,32 +30,32 @@
             </div>
             <div>
                 <div class="sidebar-avatar-image">
-                    <span><img style="border-radius:20px;" src="<?=BASEURL?>/image/rei.jpg" width="100px" height="125px" align=center></span>
+                    <span><img style="border-radius:20px;" src="<?=BASEURL;?>/image/<?=$_SESSION['foto']?>" width="100px" height="125px" align=center></span>
                 </div>
             </div>
-            <div class="sidebar-avatar-text">  Reinaldi Putra  </div>
+            <div class="sidebar-avatar-text">  <?=$_SESSION['nama']?>  </div>
 
             <ul class="sidebar-nav">
 
-                <li><a href="dashboardKades.php"> <span>Dashboard</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/index"> <span>Dashboard</span></a></li>
 
-                <li><a href="profilKades.php"> <span>Profil</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/profilKades"> <span>Profil</span></a></li>
 
-                <li><a href="buatLaporanKades.php"> <span>Buat Laporan</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/laporanSaya/<?=$_SESSION['id_user']?>"> <span>Laporan Saya</span></a></li>
 
-                <li><a href="rincianBelanjaKades.php"> <span>Rincian Belanja Desa</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/rincianBelanja/<?=$_SESSION['kelurahan']?>"> <span>Rincian Belanja Desa</span></a></li>
 
-                <li><a href="daftarLaporan.php"><span>Daftar Laporan</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/daftarLaporan/<?=$_SESSION['kelurahan']?>"><span>Daftar Laporan</span></a></li>
 
-                <li><a href="tentangDesaKades.php"><span>Tentang Desa</span></a></li>
+                <li><a href="<?=BASEURL;?>/Kades/tentangDesa/<?=$_SESSION['kelurahan']?>"><span>Tentang Desa</span></a></li>
 
 
 
-                <li><a href="index.php">
-                    <span>Logout</span>
-                </a>
+                <li><a href="<?php echo BASEURL; ?>/Home/logout">
+                        <span>Logout</span>
+                    </a>
+
                 </li>
-
 
             </ul>
             <div class="sidebar-footer">

@@ -11,8 +11,31 @@ class User_model {
 
     public function getAllusers()
     {
-        $this->db->query('SELECT * FROM '. $this->table);
+        $this->db->query('SELECT * FROM '. $this->table.' u JOIN level l ON u.level=l.idLevel WHERE u.level != 1');
         return $this->db->resultSet();
+    }
+
+    public function getUserKelurahan($data)
+    {
+        $this->db->query('SELECT COUNT(*) AS total FROM users WHERE kelurahan = :kelurahan AND level = 2');
+        $this->db->bind('kelurahan',$data['kelurahan']);
+        return $this->db->single();
+    }
+
+    public function getPengguna()
+    {
+        $this->db->query('SELECT COUNT(*) AS total FROM '. $this->table.' WHERE level != 1');
+        return $this->db->single();
+    }
+
+
+
+    public function deleteUser($id)
+    {
+        $this->db->query('DELETE FROM `users` WHERE id = :id');
+        $this->db->bind(':id', $id);
+        $this->db->execute();
+        return $this->db->rowCount();
     }
 
     public function getUsersbyId ($id)

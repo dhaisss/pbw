@@ -63,7 +63,7 @@ class Guest extends Controller
     }
 
     public function buatLaporanGuest()
-    {   echo($_POST);
+    {
         $hasilRegis = $this->model('Laporan_model')->insertLaporanGuest($_POST);
 
         if ($hasilRegis > 0) {

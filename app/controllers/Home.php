@@ -6,8 +6,11 @@ class Home extends Controller{
             $this->view('index');
         }else{
             if ($_SESSION['level'] == '1') {
-
-                $this->view('dashboardAdmin');
+                $data['user']=$this->model('User_model')->getAllusers();
+                $data['pengguna']=$this->model('User_model')->getPengguna();
+                $data['laporan']=$this->model('Laporan_model')->getLaporan();
+                $data['post']=$this->model('Laporan_model')->getPost();
+                $this->view('dashboardAdmin',$data);
             }else if($_SESSION['level'] == '2'){
                 $data['laporan']=$this->model('Laporan_model')->getAllLaporan();
                 $this->view('dashboardKades',$data);
@@ -62,7 +65,11 @@ class Home extends Controller{
 
                 if ($_SESSION['level'] == '1') {
                     Flasher::setFlash('Login','Berhasil','Selamat Datang','success');
-                    $this->view('dashboardAdmin');
+                    $data['user']=$this->model('User_model')->getAllusers();
+                    $data['pengguna']=$this->model('User_model')->getPengguna();
+                    $data['laporan']=$this->model('Laporan_model')->getLaporan();
+                    $data['post']=$this->model('Laporan_model')->getPost();
+                    $this->view('dashboardAdmin',$data);
                 }else if($_SESSION['level'] == '2'){
                     Flasher::setFlash('Login','Berhasil','Selamat Datang','success');
                     $data['laporan']=$this->model('Laporan_model')->getAllLaporan();
